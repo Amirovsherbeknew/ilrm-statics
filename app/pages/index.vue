@@ -34,7 +34,7 @@
             </div>
             <div class="shadow rounded-[32px] p-3 border-[1px] border-stone-100 bg-white/30 backdrop-blur-sm">
                 <div class="flex justify-end h-[45px] text-[32px] font-semibold text-stone-500">
-                    {{ activeDistrictName || useConstants().regionList?.find(resp => resp?.id === activeRegion)?.name_uz || '' }}
+                    {{ activeDistrictName || useConstants().regionList?.find(resp => resp?.id === Number(activeRegion))?.name_uz || "O'zbekiston Respublikasi" }}
                 </div>
                 <div class="w-full max-h-[700px] overflow-y-auto">
                     <RegionStatsPanel
@@ -57,11 +57,11 @@ function getStatics () {
 
 const selected = computed(() => {
     if (activeDistrict.value) {
-        const object = useConstants().dictrictList?.find(resp => resp?.id === activeDistrict.value)
+        const object = useConstants().dictrictList?.find(resp => resp?.id === Number(activeDistrict.value))
         return  { level: 'district', code: object?.id, name: object?.name_uz }
     }
     if (activeRegion.value) {
-        const object = useConstants().regionList?.find(resp => resp?.id === activeRegion.value)
+        const object = useConstants().regionList?.find(resp => resp?.id === Number(activeRegion.value))
         return  { level: 'region', code: object?.id, name: object?.name_uz }
     }
     return null
@@ -70,6 +70,7 @@ const selected = computed(() => {
 function back () {
     if (activeDistrict.value) {
         activeDistrict.value = undefined
+        activeDistrictName.value = undefined
         return
     }
     if (activeRegion.value) activeRegion.value = undefined
