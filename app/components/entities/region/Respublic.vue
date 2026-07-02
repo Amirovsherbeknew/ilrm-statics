@@ -230,8 +230,8 @@ function moveTooltip(event: MouseEvent) {
   const container = document.querySelector('.respublic-map-container') as HTMLElement
   if (container) {
     const rect = container.getBoundingClientRect()
-    tooltipStyle.value.left = `${event.pageX-90}px`
-    tooltipStyle.value.top = `${event.pageY-220}px`;
+    tooltipStyle.value.left = `${event.clientX - rect.left + 15}px`
+    tooltipStyle.value.top = `${event.clientY - rect.top + 15}px`
   }
 }
 

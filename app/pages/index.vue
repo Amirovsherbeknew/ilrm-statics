@@ -58,11 +58,11 @@ function getStatics () {
 const selected = computed(() => {
     if (activeDistrict.value) {
         const object = useConstants().dictrictList?.find(resp => resp?.id === activeDistrict.value)
-        return  { level: 'district', code: activeDistrict.value, name: object?.name_uz }
+        return  { level: 'district', code: object?.id, name: object?.name_uz }
     }
     if (activeRegion.value) {
         const object = useConstants().regionList?.find(resp => resp?.id === activeRegion.value)
-        return  { level: 'region', code: activeRegion.value, name: object?.name_uz }
+        return  { level: 'region', code: object?.id, name: object?.name_uz }
     }
     return null
 })
