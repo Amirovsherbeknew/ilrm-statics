@@ -12,7 +12,7 @@
                 <div class="w-full flex justify-end h-[45px] border-b-[2px] border-stone-200 py-1">
                     <button v-if="activeRegion || activeDistrict" class="rounded-lg border border-stone-300 px-2 py-1 w-[70px]" @click="back">Ortga</button>
                 </div>
-                <!-- <div class="w-full flex items-center justify-center flex-1" style="height: calc(100% - 45px);">
+                <div class="w-full flex items-center justify-center flex-1" style="height: calc(100% - 45px);">
                     <template v-if="activeRegion">
                         <Region1 v-if="Number(activeRegion) === 1" v-model="activeDistrict" v-model:name="activeDistrictName"  @district-click="getStatics"/>
                         <Region2 v-if="Number(activeRegion) === 2" v-model="activeDistrict" v-model:name="activeDistrictName"  @district-click="getStatics"/>
@@ -30,7 +30,7 @@
                         <Region14 v-if="Number(activeRegion) === 14" v-model="activeDistrict" v-model:name="activeDistrictName"  @district-click="getStatics"/>
                     </template>
                     <Respublic v-else class="-ml-3" v-model="activeRegion" @change-id="getStatics"/>
-                </div> -->
+                </div>
             </div>
             <div class="shadow rounded-[32px] p-3 border-[1px] border-stone-100 bg-white/30 backdrop-blur-sm">
                 <div v-if="!isActive" class="flex justify-end h-[45px] text-[32px] font-semibold text-stone-500">
