@@ -2378,7 +2378,7 @@ export const dictrictList = [
 
 export const statics = [
   {
-    "№": 1,
+    "id": 1,
     "Loyiha nomi": "Quyosh elektr stansiyasini qurish",
     "Davlat": "Germaniya",
     "Kafil bank": "Aloqabank",
@@ -2397,7 +2397,7 @@ export const statics = [
     ]
   },
   {
-    "№": 2,
+    "id": 2,
     "Loyiha nomi": "To'qimachilik ishlab chiqarishini modernizatsiya qilish",
     "Davlat": "Turkiya",
     "Kafil bank": "Asakabank",
@@ -2414,7 +2414,7 @@ export const statics = [
     ]
   },
   {
-    "№": 3,
+    "id": 3,
     "Loyiha nomi": "Logistika markazini qurish",
     "Davlat": "Xitoy",
     "Kafil bank": "SQB",
@@ -2429,7 +2429,7 @@ export const statics = [
     ]
   },
   {
-    "№": 4,
+    "id": 4,
     "Loyiha nomi": "Avtomobil yo'lini rekonstruksiya qilish",
     "Davlat": "Janubiy Koreya",
     "Kafil bank": "Agrobank",
@@ -2444,7 +2444,7 @@ export const statics = [
     ]
   },
   {
-    "№": 5,
+    "id": 5,
     "Loyiha nomi": "Tibbiyot markazini qurish",
     "Davlat": "Yaponiya",
     "Kafil bank": "Hamkorbank",
@@ -2463,7 +2463,7 @@ export const statics = [
     ]
   },
   {
-    "№": 6,
+    "id": 6,
     "Loyiha nomi": "IT Parkni tashkil etish",
     "Davlat": "AQSH",
     "Kafil bank": "Ipoteka-bank",
@@ -2480,7 +2480,7 @@ export const statics = [
     ]
   },
   {
-    "№": 7,
+    "id": 7,
     "Loyiha nomi": "Sement zavodini qurish",
     "Davlat": "Qozog'iston",
     "Kafil bank": "Xalq Banki",
@@ -2495,7 +2495,7 @@ export const statics = [
     ]
   },
   {
-    "№": 8,
+    "id": 8,
     "Loyiha nomi": "Aeroport infratuzilmasini kengaytirish",
     "Davlat": "BAA",
     "Kafil bank": "Mikrokreditbank",
@@ -2510,7 +2510,7 @@ export const statics = [
     ]
   },
   {
-    "№": 9,
+    "id": 9,
     "Loyiha nomi": "Agrosanoat majmuasini qurish",
     "Davlat": "Fransiya",
     "Kafil bank": "Turonbank",
@@ -2529,7 +2529,7 @@ export const statics = [
     ]
   },
   {
-    "№": 10,
+    "id": 10,
     "Loyiha nomi": "Suv ta'minoti tizimini modernizatsiya qilish",
     "Davlat": "Italiya",
     "Kafil bank": "Orient Finans Bank",
@@ -2548,7 +2548,7 @@ export const statics = [
     ]
   },
   {
-    "№": 11,
+    "id": 11,
     "Loyiha nomi": "Shamol elektr stansiyasini qurish",
     "Davlat": "Daniya",
     "Kafil bank": "Kapitalbank",
@@ -2565,7 +2565,7 @@ export const statics = [
     ]
   },
   {
-    "№": 12,
+    "id": 12,
     "Loyiha nomi": "Kimyo zavodini modernizatsiya qilish",
     "Davlat": "Hindiston",
     "Kafil bank": "Trastbank",
@@ -2584,7 +2584,7 @@ export const statics = [
     ]
   },
   {
-    "№": 13,
+    "id": 13,
     "Loyiha nomi": "Ko'prik qurilishi",
     "Davlat": "Rossiya",
     "Kafil bank": "Asakabank",
@@ -2599,7 +2599,7 @@ export const statics = [
     ]
   },
   {
-    "№": 14,
+    "id": 14,
     "Loyiha nomi": "Temir yo'l vokzalini rekonstruksiya qilish",
     "Davlat": "Xitoy",
     "Kafil bank": "SQB",
@@ -2616,7 +2616,7 @@ export const statics = [
     ]
   },
   {
-    "№": 15,
+    "id": 15,
     "Loyiha nomi": "Yangi maktab qurilishi",
     "Davlat": "Turkiya",
     "Kafil bank": "Agrobank",
@@ -2631,7 +2631,7 @@ export const statics = [
     ]
   },
   {
-    "№": 16,
+    "id": 16,
     "Loyiha nomi": "Universitet kampusini kengaytirish",
     "Davlat": "Buyuk Britaniya",
     "Kafil bank": "Hamkorbank",
@@ -2648,7 +2648,7 @@ export const statics = [
     ]
   },
   {
-    "№": 17,
+    "id": 17,
     "Loyiha nomi": "Ichimlik suvi tizimini yangilash",
     "Davlat": "Fransiya",
     "Kafil bank": "Ipoteka-bank",
@@ -2665,7 +2665,7 @@ export const statics = [
     ]
   },
   {
-    "№": 18,
+    "id": 18,
     "Loyiha nomi": "Aqlli shahar infratuzilmasini yaratish",
     "Davlat": "Singapur",
     "Kafil bank": "Aloqabank",
@@ -2682,7 +2682,7 @@ export const statics = [
     ]
   },
   {
-    "№": 19,
+    "id": 19,
     "Loyiha nomi": "Farmatsevtika zavodini qurish",
     "Davlat": "Hindiston",
     "Kafil bank": "Mikrokreditbank",
@@ -2697,7 +2697,7 @@ export const statics = [
     ]
   },
   {
-    "№": 20,
+    "id": 20,
     "Loyiha nomi": "Yangi aeroport terminalini qurish",
     "Davlat": "BAA",
     "Kafil bank": "Turonbank",
@@ -2714,7 +2714,7 @@ export const statics = [
     ]
   },
   {
-    "№": 21,
+    "id": 21,
     "Loyiha nomi": "Qishloq xo'jaligi logistika markazi",
     "Davlat": "Niderlandiya",
     "Kafil bank": "Xalq Banki",
@@ -2731,7 +2731,7 @@ export const statics = [
     ]
   },
   {
-    "№": 22,
+    "id": 22,
     "Loyiha nomi": "Gidroelektr stansiyasini qurish",
     "Davlat": "Norvegiya",
     "Kafil bank": "Kapitalbank",
@@ -2748,7 +2748,7 @@ export const statics = [
     ]
   },
   {
-    "№": 23,
+    "id": 23,
     "Loyiha nomi": "Tibbiy uskunalar ishlab chiqarish",
     "Davlat": "Janubiy Koreya",
     "Kafil bank": "Trastbank",
@@ -2767,7 +2767,7 @@ export const statics = [
     ]
   },
   {
-    "№": 24,
+    "id": 24,
     "Loyiha nomi": "Metro liniyasini qurish",
     "Davlat": "Yaponiya",
     "Kafil bank": "SQB",
@@ -2782,7 +2782,7 @@ export const statics = [
     ]
   },
   {
-    "№": 25,
+    "id": 25,
     "Loyiha nomi": "Ma'lumotlar markazini qurish",
     "Davlat": "AQSH",
     "Kafil bank": "Hamkorbank",
@@ -2797,7 +2797,7 @@ export const statics = [
     ]
   },
   {
-    "№": 26,
+    "id": 26,
     "Loyiha nomi": "Turizm majmuasini barpo etish",
     "Davlat": "Italiya",
     "Kafil bank": "Agrobank",
@@ -2816,7 +2816,7 @@ export const statics = [
     ]
   },
   {
-    "№": 27,
+    "id": 27,
     "Loyiha nomi": "Issiqxona majmuasini qurish",
     "Davlat": "Isroil",
     "Kafil bank": "Ipoteka-bank",
@@ -2831,7 +2831,7 @@ export const statics = [
     ]
   },
   {
-    "№": 28,
+    "id": 28,
     "Loyiha nomi": "Elektr tarmoqlarini modernizatsiya qilish",
     "Davlat": "Germaniya",
     "Kafil bank": "Aloqabank",
@@ -2846,7 +2846,7 @@ export const statics = [
     ]
   },
   {
-    "№": 29,
+    "id": 29,
     "Loyiha nomi": "Chiqindilarni qayta ishlash zavodi",
     "Davlat": "Shvetsiya",
     "Kafil bank": "Turonbank",
@@ -2861,7 +2861,7 @@ export const statics = [
     ]
   },
   {
-    "№": 30,
+    "id": 30,
     "Loyiha nomi": "Sanoat texnoparkini tashkil etish",
     "Davlat": "Malayziya",
     "Kafil bank": "Mikrokreditbank",

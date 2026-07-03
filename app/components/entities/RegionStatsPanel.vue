@@ -4,6 +4,7 @@
        selected.level === 'region'  -> viloyat/shahar tanlangan
        selected.level === 'district'-> tuman tanlangan -->
   <div class="h-full w-full bg-[#FAF8F3] font-['Inter',sans-serif] text-[#2B2A28]">
+    <DialogsChoiseFormulaDialog/>
     <div class="flex h-full flex-col">
       <!-- Ledger header -->
       <div class="relative border-b border-[#E4DFD2] bg-white px-8 pb-6 pt-8">
@@ -55,7 +56,8 @@
         <li
           v-for="p in projects"
           :key="p.num"
-          class="group relative py-5 pl-6"
+          class="group relative py-5 pl-6 cursor-pointer"
+          @click="isActive = p?.num"
         >
           <!-- timeline dot -->
           <span
@@ -105,6 +107,8 @@
 <script setup>
 import { computed } from 'vue'
 
+const isActive = defineModel()
+
 /**
  * selected: null | { level: 'region' | 'district', code: Number, name: String }
  *   - null            -> hech narsa tanlanmagan: butun respublika kesimida ko'rsatiladi
@@ -146,7 +150,7 @@ const projects = computed(() => {
 
 function mapItems(items) {
   return items.map((item) => ({
-    num: item['№'],
+    num: item['id'],
     name: item['Loyiha nomi'],
     country: item['Davlat'],
     bank: item['Kafil bank'],
