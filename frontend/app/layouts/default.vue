@@ -1,9 +1,14 @@
 <template>
-    <div class="w-full h-svh flex flex-col gap-3 login-view-box">
+    <div class="w-full h-svh flex flex-col gap-3 login-view-box" v-loading.fullscreen.lock="loading">
         <Header/>
         <NuxtPage/>
     </div>
 </template>
+<script setup>
+import { useMainStore } from '~~/store';
+
+const {loading} = useMainStore()
+</script>
 <style lang="css" scoped>
 .login-view-box {
   background: url('../assets/images/background.png');
