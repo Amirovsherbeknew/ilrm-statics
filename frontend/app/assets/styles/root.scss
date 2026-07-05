@@ -1,0 +1,623 @@
+// SCSS Installation and Setup Guide:
+// 1. npm install -D sass
+// 2. Add to nuxt.config.ts:
+//    css: ['~/assets/scss/root.scss']
+
+// Import Tailwind CSS
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Shadcn/ui CSS Variables
+@layer base {
+  :root {
+    --color-base: #004494;
+    --color-primary: #0ea5e9;
+    --color-light-grey: #fafaf9;
+    --color-stone-600: #57534e;
+    --color-stone-500: #78716c;
+    --color-stone-400: #a8a29e;
+    --color-stone-300: #d6d3d1;
+    --color-stone-100: #f5f5f4;
+    --color-stone-50: #fafaf9;
+    --color-sky-50: #f0f9ff;
+    --color-sky-100: #e0f2fe;
+    --color-sky-200: #bae6fd;
+    --color-sky-500: #0ea5e9;
+    --color-sky-600: #0284c7;
+    --color-sky-700: #0069a8;
+    --color-rose-50: #fff1f2;
+    --color-red-600: #dc2626;
+    --color-teal-50: #f0fdfa;
+    --color-teal-600: #0d9488;
+    --color-violet-50: #f5f3ff;
+    --color-violet-600: #7c3aed;
+    --color-indigo-600: #4f46e5;
+    --color-indigo-50: #eef2ff;
+    --color-emerald-600: #059669;
+    --color-emerald-50: #ecfdf5;
+    --color-green-50: #effdf5;
+    --color-slate-500: #64748b;
+    --color-slate-300: #cbd5e1;
+    --color-slate-200: #e2e8f0;
+    --color-slate-100: #f1f5f9;
+    --color-slate-50: #f8fafc;
+    --color-blue-50: #eff6ff;
+    --color-blue-600: #2563eb;
+    --color-orange-50: #fff7ed;
+    --color-amber-600: #d97706;
+    --color-rose-600: #f43f5e;
+    --color-teal-500: #14b8a6;
+    --color-quaternary: #fef6e9;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    --el-border-radius-base:16px;
+    // Additional custom variables
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --primary-500: #3b82f6;
+    --primary-600: #2563eb;
+    --primary-700: #1d4ed8;
+    --radius-xl: 0.75rem;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --el-disabled-text-color:red;
+  }
+
+  .dark {
+    
+    --color-base: #004494;
+    --color-primary: #0ea5e9;
+    --color-light-grey: #fafaf9;
+    --color-stone-600: #57534e;
+    --color-stone-500: #78716c;
+    --color-stone-400: #a8a29e;
+    --color-stone-300: #d6d3d1;
+    --color-stone-100: #f5f5f4;
+    --color-stone-50: #fafaf9;
+    --color-sky-50: #f0f9ff;
+    --color-sky-100: #e0f2fe;
+    --color-sky-200: #bae6fd;
+    --color-sky-500: #0ea5e9;
+    --color-sky-600: #0284c7;
+    --color-sky-700: #0069a8;
+    --color-rose-50: #fff1f2;
+    --color-red-600: #dc2626;
+    --color-teal-50: #f0fdfa;
+    --color-teal-600: #0d9488;
+    --color-violet-50: #f5f3ff;
+    --color-violet-600: #7c3aed;
+    --color-indigo-600: #4f46e5;
+    --color-indigo-50: #eef2ff;
+    --color-emerald-600: #059669;
+    --color-emerald-50: #ecfdf5;
+    --color-green-50: #effdf5;
+    --color-slate-500: #64748b;
+    --color-slate-300: #cbd5e1;
+    --color-slate-200: #e2e8f0;
+    --color-slate-100: #f1f5f9;
+    --color-slate-50: #f8fafc;
+    --color-blue-50: #eff6ff;
+    --color-blue-600: #2563eb;
+    --color-orange-50: #fff7ed;
+    --color-amber-600: #d97706;
+    --color-rose-600: #f43f5e;
+    --color-teal-500: #14b8a6;
+    --color-quaternary: #fef6e9;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+    --el-disabled-text-color:red;
+  }
+}
+
+// Base styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography improvements
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  color: hsl(var(--foreground));
+}
+
+p {
+  line-height: 1.6;
+  color: hsl(var(--muted-foreground));
+}
+
+// Link styles
+a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// Custom component utilities
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-xl;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border rounded-xl;
+    @apply focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    @apply transition-all duration-200 ease-in-out;
+    @apply placeholder-gray-400 text-gray-900;
+    border-color: hsl(var(--border));
+    background-color: hsl(var(--background));
+    
+    &:hover {
+      border-color: hsl(var(--ring));
+    }
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium mb-2;
+    color: hsl(var(--foreground));
+  }
+  
+  .card-modern {
+    @apply bg-white rounded-2xl shadow-lg border;
+    @apply transition-all duration-300 hover:shadow-xl;
+    background-color: hsl(var(--card));
+    border-color: hsl(var(--border));
+    color: hsl(var(--card-foreground));
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent;
+  }
+  
+  // Button base styles
+  .btn-modern {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-xl;
+    @apply transition-all duration-200 ease-in-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    
+    &.btn-primary {
+      @apply bg-gradient-to-r from-blue-600 to-indigo-600 text-white;
+      @apply hover:from-blue-700 hover:to-indigo-700;
+      @apply focus:ring-blue-500 shadow-lg hover:shadow-xl;
+    }
+    
+    &.btn-secondary {
+      @apply bg-white text-gray-700 border-gray-300;
+      @apply hover:bg-gray-50 hover:border-gray-400;
+      @apply focus:ring-gray-500;
+      background-color: hsl(var(--secondary));
+      color: hsl(var(--secondary-foreground));
+      border-color: hsl(var(--border));
+      
+      &:hover {
+        background-color: hsl(var(--secondary) / 0.8);
+      }
+    }
+    
+    &.btn-ghost {
+      @apply bg-transparent border-transparent;
+      @apply hover:bg-gray-100;
+      color: hsl(var(--muted-foreground));
+      
+      &:hover {
+        background-color: hsl(var(--accent));
+        color: hsl(var(--accent-foreground));
+      }
+    }
+  }
+}
+
+// Element Plus Button - Shadcn/ui style
+.el-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  outline: 2px solid transparent !important;
+  outline-offset: 2px !important;
+  border-radius: 0.375rem !important;
+  height: 2.25rem !important;
+  padding: 0 1rem !important;
+  border: 1px solid transparent !important;
+  cursor: pointer !important;
+  
+  &:focus-visible {
+    outline: none !important;
+    box-shadow: 0 0 0 2px hsl(var(--ring)) !important;
+  }
+  
+  &:disabled {
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+  }
+  
+  // Default variant
+  &.el-button--default {
+    color: hsl(var(--foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+    background-color: hsl(var(--background)) !important;
+    
+    &:hover {
+      background-color: hsl(var(--accent)) !important;
+      color: hsl(var(--accent-foreground)) !important;
+    }
+  }
+  
+  // Primary variant
+  &.el-button--primary {
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border-color: transparent !important;
+    
+    &:hover {
+      background-color: hsl(var(--primary) / 0.9) !important;
+    }
+    
+    &:active {
+      background-color: hsl(var(--primary) / 0.95) !important;
+    }
+  }
+  
+  // Success variant
+  &.el-button--success {
+    background-color: hsl(142 76% 36%) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border-color: transparent !important;
+    
+    &:hover {
+      background-color: hsl(142 76% 30%) !important;
+    }
+  }
+  
+  // Warning variant  
+  &.el-button--warning {
+    background-color: hsl(38 92% 50%) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border-color: transparent !important;
+    
+    &:hover {
+      background-color: hsl(38 92% 45%) !important;
+    }
+  }
+  
+  // Danger variant
+  &.el-button--danger {
+    background-color: hsl(var(--destructive)) !important;
+    color: hsl(var(--destructive-foreground)) !important;
+    border-color: transparent !important;
+    
+    &:hover {
+      background-color: hsl(var(--destructive) / 0.9) !important;
+    }
+  }
+  
+  // Info variant
+  &.el-button--info {
+    background-color: hsl(210 40% 50%) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border-color: transparent !important;
+    
+    &:hover {
+      background-color: hsl(210 40% 45%) !important;
+    }
+  }
+  
+  // Text variant
+  &.is-text {
+    background-color: transparent !important;
+    color: hsl(var(--primary)) !important;
+    border-color: transparent !important;
+    
+    &:hover {
+      background-color: hsl(var(--accent)) !important;
+      color: hsl(var(--accent-foreground)) !important;
+    }
+  }
+  
+  // Plain variant
+  &.is-plain {
+    background-color: transparent !important;
+    color: hsl(var(--primary)) !important;
+    border-color: hsl(var(--primary)) !important;
+    
+    &:hover {
+      background-color: hsl(var(--primary)) !important;
+      color: hsl(var(--primary-foreground)) !important;
+    }
+  }
+  
+  // Size variants
+  &.el-button--large {
+    padding: 0 2rem !important;
+    border-radius: 0.5rem !important;
+  }
+  
+  &.el-button--small {
+    height: 2rem !important;
+    padding: 0 0.75rem !important;
+    font-size: 0.875rem !important;
+    border-radius: 0.25rem !important;
+  }
+  
+  // Loading state
+  &.is-loading {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+  }
+  
+  // Disabled state
+  &.is-disabled,
+  &:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+}
+
+.el-button--large {
+  height: none !important;
+}
+
+// Element Plus Input styling
+.el-input {
+  .el-input__wrapper {
+    border-radius: var(--radius) !important;
+    transition: all 0.2s ease !important;
+    background-color: hsl(var(--background)) !important;
+    
+    
+    
+    &.is-focus {
+      border-color: hsl(var(--ring)) !important;
+      box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1) !important;
+    }
+  }
+  
+  .el-input__inner {
+    color: hsl(var(--foreground)) !important;
+    font-weight: 500 !important;
+    
+    &::placeholder {
+      color: hsl(var(--muted-foreground)) !important;
+    }
+  }
+}
+
+// Element Plus Form styling
+.el-form-item {
+  margin-bottom: 1.5rem !important;
+  
+  .el-form-item__label {
+    color: hsl(var(--foreground)) !important;
+    font-weight: 500 !important;
+  }
+  
+  .el-form-item__error {
+    font-size: 0.75rem !important;
+    color: hsl(var(--destructive)) !important;
+    padding-top: 0.25rem !important;
+  }
+}
+
+// Element Plus Checkbox styling
+.el-checkbox {
+  .el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: hsl(var(--primary)) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+  
+  .el-checkbox__label {
+    color: hsl(var(--foreground)) !important;
+    font-weight: 500 !important;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+// Utility classes
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-pulse-hover:hover {
+  animation: pulse 0.3s ease-in-out;
+}
+
+
+// Responsive design helpers
+@media (max-width: 640px) {
+  .card-modern {
+    @apply mx-4 rounded-xl;
+  }
+  
+  .glass-card {
+    @apply mx-4 rounded-2xl;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .card-modern {
+    background-color: hsl(var(--card));
+    border-color: hsl(var(--border));
+  }
+}
+
+.el-popper {
+  border-radius: 10px !important;
+  box-sizing: border-box;
+  z-index: calc(var(--el-index-top) + 1);
+}
+.el-select__wrapper {
+  border-radius: var(--radius) !important;
+}
+
+.el-input.is-disabled .el-input__inner {
+  -webkit-text-fill-color: #5c5c5c !important;
+}
+
+.el-select__wrapper.is-disabled .el-select__selected-item {
+  -webkit-text-fill-color: #5c5c5c !important;
+}
+
+.el-select-dropdown__list {
+  max-width: 90vw !important;
+} 
+.el-select-dropdown__item {
+  text-overflow: unset !important;
+  text-wrap: wrap !important;
+  min-height: 34px;
+  height: auto !important;
+}
+
+@media screen and (max-width:1024px) {
+    .el-step, .is-horizontal {
+      min-width: 280px;
+    }
+    .el-steps, .el-steps--horizontal {
+      width: 100%;
+      overflow: auto;
+    }
+}
+
+
+.el-steps {
+  .is-process {
+    .el-step__icon, .is-text {
+      color: #FFF !important;
+      background-color: #2563EB !important;
+    }
+
+  }
+  .el-step__icon, .is-text {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 3px #ccc;
+    border: 3px #fff;
+    font-size: 18px;
+  }
+  .el-step.is-horizontal, .el-step__line {
+    top: 20px !important;
+  }
+}
+.el-dialog {
+  padding: 30px !important;
+  border-radius: 20px !important;
+}
+
+div.el-segmented {
+    --el-segmented-color: var(--el-text-color-regular);
+    --el-segmented-bg-color: var(--el-fill-color-light);
+    --el-segmented-padding: 5px;
+    --el-segmented-item-selected-color: var(--el-color-white);
+    --el-segmented-item-selected-bg-color: var(--el-color-primary);
+    --el-segmented-item-selected-disabled-bg-color: var(--el-color-primary-light-5);
+    --el-segmented-item-hover-color: var(--el-text-color-primary);
+    --el-segmented-item-hover-bg-color: var(--el-fill-color-dark);
+    --el-segmented-item-active-bg-color: var(--el-fill-color-darker);
+    --el-segmented-item-disabled-color: var(--el-text-color-placeholder);
+    background: var(--el-segmented-bg-color);
+    min-height: 42px;
+    padding: var(--el-segmented-padding);
+    border-radius: 8px;
+    color: var(--el-segmented-color);
+    box-sizing: border-box;
+    align-items: stretch;
+    font-size: 14px;
+    display: inline-flex;
+}
+div.el-segmented__item-selected {
+    border-radius: 6px !important;
+}

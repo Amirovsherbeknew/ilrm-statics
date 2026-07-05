@@ -1,0 +1,140 @@
+{
+  "projects": [
+    {
+      "name": "Test loyiha",
+      "type": "Sanoat",
+      "year": "2026",
+      "investmentType": "xususiy",
+      "organization": "Test tashkilot",
+      "country": "O'zbekiston",
+      "guarantorBank": "Xalq banki",
+      "insuranceCompany": "Kafolat",
+      "businessPlan": "/uploads/1783271079451-823701220-bp.txt",
+      "passportFile": "/uploads/1783271079453-629622928-passport.txt",
+      "createdAt": "2026-07-05T17:04:39.454Z",
+      "updatedAt": "2026-07-05T17:04:39.454Z",
+      "status": "DR",
+      "id": 1
+    },
+    {
+      "name": "asdsad",
+      "type": "Qishloq xo'jaligi",
+      "year": "2026",
+      "investmentType": "xususiy",
+      "organization": "asd",
+      "country": "Rossiya",
+      "guarantorBank": "Milliy bank",
+      "insuranceCompany": "Gross Insurance",
+      "businessPlan": "/uploads/1783271917824-380627472-image_2026-06-21_13-35-44.png",
+      "passportFile": "/uploads/1783271917827-822962772-image_2026-06-21_13-31-38.png",
+      "createdAt": "2026-07-05T17:18:37.829Z",
+      "updatedAt": "2026-07-05T23:18:11.837Z",
+      "status": "IP",
+      "id": 2,
+      "regions": [
+        14
+      ],
+      "districts": [
+        203,
+        204,
+        205
+      ],
+      "npv": 62.96,
+      "dpp": 4.29
+    },
+    {
+      "name": "asdsad",
+      "type": "Qishloq xo'jaligi",
+      "year": "2026",
+      "investmentType": "davlat",
+      "organization": "sadsa",
+      "country": "Rossiya",
+      "guarantorBank": "Milliy bank",
+      "insuranceCompany": "Apex Sug'urta",
+      "businessPlan": "/uploads/1783285240403-763261848-image_2026-06-21_13-35-44.png",
+      "passportFile": "/uploads/1783285240405-528984498-IMG_8290.JPG",
+      "createdAt": "2026-07-05T21:00:40.451Z",
+      "updatedAt": "2026-07-05T22:44:03.842Z",
+      "status": "IP",
+      "id": 3,
+      "npv": 47.53345426162946,
+      "dpp": 4.291690312499999,
+      "bcr": 1.4999999999999998,
+      "eirr": 35.733279519970594
+    }
+  ],
+  "stages": [
+    {
+      "name": "Boshlang'ich bosqich",
+      "startDate": "2026-08-01",
+      "endDate": "2026-09-01",
+      "projectId": 1,
+      "createdAt": "2026-07-05T17:05:02.263Z",
+      "updatedAt": "2026-07-05T17:05:02.263Z",
+      "id": 1
+    },
+    {
+      "name": "asdsad",
+      "startDate": "2026-07-20",
+      "endDate": "2026-07-30",
+      "projectId": 2,
+      "createdAt": "2026-07-05T17:18:46.090Z",
+      "updatedAt": "2026-07-05T17:18:46.090Z",
+      "id": 2
+    },
+    {
+      "name": "rsfsdf",
+      "startDate": "2026-07-16",
+      "endDate": "2026-07-31",
+      "projectId": 3,
+      "createdAt": "2026-07-05T22:28:40.891Z",
+      "updatedAt": "2026-07-05T22:28:40.891Z",
+      "id": 3
+    },
+    {
+      "name": "dasdasd",
+      "startDate": "2026-07-23",
+      "endDate": "2026-07-31",
+      "projectId": 3,
+      "createdAt": "2026-07-05T22:30:58.644Z",
+      "updatedAt": "2026-07-05T22:30:58.644Z",
+      "id": 4
+    },
+    {
+      "name": "adsadad",
+      "startDate": "2026-08-11",
+      "endDate": "2026-08-26",
+      "projectId": 3,
+      "createdAt": "2026-07-05T22:31:08.443Z",
+      "updatedAt": "2026-07-05T22:31:08.443Z",
+      "id": 5
+    },
+    {
+      "name": "sadsad",
+      "startDate": "2026-07-24",
+      "endDate": "2026-07-31",
+      "projectId": 2,
+      "createdAt": "2026-07-05T23:16:36.232Z",
+      "updatedAt": "2026-07-05T23:16:36.232Z",
+      "id": 6
+    },
+    {
+      "name": "ads1",
+      "startDate": "2026-08-11",
+      "endDate": "2026-08-20",
+      "projectId": 2,
+      "createdAt": "2026-07-05T23:16:45.639Z",
+      "updatedAt": "2026-07-05T23:16:45.639Z",
+      "id": 7
+    },
+    {
+      "name": "sdsadsa",
+      "startDate": "2026-09-08",
+      "endDate": "2026-09-18",
+      "projectId": 2,
+      "createdAt": "2026-07-05T23:17:41.307Z",
+      "updatedAt": "2026-07-05T23:17:41.307Z",
+      "id": 8
+    }
+  ]
+}
