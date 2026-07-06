@@ -104,7 +104,7 @@
       </div>
 
       <el-form ref="formRef" :model="form" :rules="rules" label-position="top">
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
           <el-form-item label="Loyihadan kutilayotgan yillik iqtisodiy samara (mln so'm)" prop="benefit">
             <el-input v-model.number="form.benefit" type="number" placeholder="Masalan: 150" />
             <p class="mt-1.5 text-xs text-slate-500">

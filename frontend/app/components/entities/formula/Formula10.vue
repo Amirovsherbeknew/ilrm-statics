@@ -113,7 +113,7 @@
       </p>
 
       <el-form ref="formRef" :model="form" :rules="rules" label-position="top">
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
           <el-form-item prop="initialCost">
             <template #label>
               <span class="inline-flex items-center gap-2">
