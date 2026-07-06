@@ -57,5 +57,5 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@element-plus/nuxt', 'nuxt-svgo'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@element-plus/nuxt', 'nuxt-svgo', '@nuxt/icon'],
 })

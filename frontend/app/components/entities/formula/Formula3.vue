@@ -10,8 +10,10 @@
 
     <!-- To'q ko'k banner -->
     <div class="mb-6 flex items-center gap-4 rounded-xl bg-blue-950 px-5 py-4 text-white">
-      <span class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-blue-900 text-xl">🕐</span>
-      <p class="text-sm font-semibold sm:text-base">
+      <span class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-blue-900">
+        <Icon name="lucide:clock" class="h-6 w-6" />
+      </span>
+      <p class="text-sm font-semibold sm:text-base !text-white">
         Bu hisob-kitob loyihaga kiritilgan sarmoya qancha vaqtda qaytib
         kelishini ko'rsatadi.
       </p>
@@ -21,7 +23,7 @@
     <div class="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <div class="rounded-xl border border-slate-200 bg-white p-5">
         <div class="mb-3 flex items-center gap-2.5">
-          <span class="text-2xl">ℹ️</span>
+          <Icon name="lucide:info" class="h-6 w-6 text-blue-600" />
           <h3 class="font-bold">Nimani ko'rsatadi?</h3>
         </div>
         <p class="text-sm leading-relaxed text-slate-700">
@@ -32,7 +34,7 @@
 
       <div class="rounded-xl border border-slate-200 bg-white p-5">
         <div class="mb-3 flex items-center gap-2.5">
-          <span class="text-2xl">🎯</span>
+          <Icon name="lucide:target" class="h-6 w-6 text-purple-600" />
           <h3 class="font-bold">Qanday hisoblanadi?</h3>
         </div>
         <p class="text-sm leading-relaxed text-slate-700">
@@ -44,7 +46,7 @@
 
       <div class="rounded-xl border border-slate-200 bg-white p-5">
         <div class="mb-3 flex items-center gap-2.5">
-          <span class="text-2xl">🏛️</span>
+          <Icon name="lucide:landmark" class="h-6 w-6 text-blue-600" />
           <h3 class="font-bold">Qaysi loyihalar uchun?</h3>
         </div>
         <p class="text-sm leading-relaxed text-slate-700">
@@ -54,13 +56,22 @@
 
       <div class="rounded-xl border border-slate-200 bg-white p-5">
         <div class="mb-3 flex items-center gap-2.5">
-          <span class="text-2xl">🕐</span>
+          <Icon name="lucide:clock" class="h-6 w-6 text-orange-500" />
           <h3 class="font-bold">Qoida</h3>
         </div>
         <ul class="space-y-2 text-sm leading-relaxed text-slate-700">
-          <li class="flex gap-2"><span>✅</span><span>Qisqa muddat — yaxshi</span></li>
-          <li class="flex gap-2"><span>➖</span><span>Uzoq muddat — kamroq samarali</span></li>
-          <li class="flex gap-2"><span>❌</span><span>Juda uzoq muddat — tavsiya etilmaydi</span></li>
+          <li class="flex items-start gap-2">
+            <Icon name="lucide:circle-check" class="mt-0.5 h-4 w-4 flex-none text-green-600" />
+            <span>Qisqa muddat — yaxshi</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="lucide:circle-minus" class="mt-0.5 h-4 w-4 flex-none text-amber-500" />
+            <span>Uzoq muddat — kamroq samarali</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="lucide:circle-x" class="mt-0.5 h-4 w-4 flex-none text-red-600" />
+            <span>Juda uzoq muddat — tavsiya etilmaydi</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -68,7 +79,9 @@
     <!-- Kalkulyator -->
     <div class="mb-6 rounded-xl border border-slate-200 bg-white p-6">
       <div class="mb-5 flex items-center gap-2.5">
-        <span class="text-2xl">🧮</span>
+        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
+          <Icon name="lucide:calculator" class="h-5 w-5" />
+        </span>
         <h2 class="text-lg font-bold">Hisoblash uchun ma'lumotlar</h2>
       </div>
 
@@ -77,39 +90,41 @@
           <div>
             <el-form-item prop="investment">
               <template #label>
-                Boshlang'ich sarmoya (mln so'm)
+                Loyiha boshida kiritiladigan mablag' (mln so'm)
                 <span class="text-red-500">*</span>
               </template>
               <el-input v-model.number="form.investment" type="number" placeholder="Masalan: 90" />
             </el-form-item>
             <p class="mt-1.5 text-xs text-slate-500">
-              Loyihani boshlash uchun kiritiladigan mablag'.
+              Loyihaga kiritiladigan umumiy mablag'.
             </p>
           </div>
 
           <div>
             <el-form-item prop="cashFlow">
               <template #label>
-                Har yili keladigan sof foyda (mln so'm)
+                Loyihadan kutilayotgan yillik iqtisodiy samara (mln so'm)
                 <span class="text-red-500">*</span>
               </template>
               <el-input v-model.number="form.cashFlow" type="number" placeholder="Masalan: 30" />
             </el-form-item>
             <p class="mt-1.5 text-xs text-slate-500">
-              Har yili olinadigan o'rtacha sof foyda.
+              Barcha xarajatlar hisobga olingandan keyin kutilayotgan yillik
+              iqtisodiy samara.
             </p>
           </div>
 
           <div>
             <el-form-item prop="rate">
               <template #label>
-                Inflyatsiya hisoblash uchun foiz stavkasi (%)
+                Yillik inflyatsiya (%)
                 <span class="text-red-500">*</span>
               </template>
               <el-input v-model.number="form.rate" type="number" placeholder="Masalan: 15" />
             </el-form-item>
             <p class="mt-1.5 text-xs text-slate-500">
-              Kelajakdagi pulni bugungi qiymatga o'tkazish foizi.
+              Kelajakdagi mablag'ni bugungi qiymatga keltirish uchun
+              qo'llaniladi.
             </p>
           </div>
 
@@ -129,9 +144,11 @@
 
         <div class="mt-4 flex gap-3">
           <el-button type="primary" class="!bg-blue-800 !border-blue-800" @click="calculate">
-            🧮 Hisoblash
+            <Icon name="lucide:calculator" class="mr-1.5 h-4 w-4" /> Hisoblash
           </el-button>
-          <el-button @click="reset">↺ Tozalash</el-button>
+          <el-button @click="reset">
+            <Icon name="lucide:rotate-ccw" class="mr-1.5 h-4 w-4" /> Tozalash
+          </el-button>
         </div>
       </el-form>
     </div>
@@ -145,10 +162,10 @@
       <!-- Sarlavha -->
       <div class="mb-1 flex items-center gap-3">
         <span
-          class="flex h-11 w-11 items-center justify-center rounded-full text-xl text-white"
+          class="flex h-11 w-11 items-center justify-center rounded-full text-white"
           :class="result.dppFound ? 'bg-green-600' : 'bg-red-600'"
         >
-          {{ result.dppFound ? '✓' : '✕' }}
+          <Icon :name="result.dppFound ? 'lucide:check' : 'lucide:x'" class="h-6 w-6" />
         </span>
         <h2
           class="text-xl font-extrabold sm:text-2xl"
@@ -167,38 +184,35 @@
 
       <!-- 3 ta karta -->
       <div class="grid items-center gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
-        <div class="rounded-xl border border-slate-200 bg-white p-5 text-center">
-          <div
-            class="mb-1 flex items-center justify-center gap-2 text-sm font-semibold"
-            :class="result.dppFound ? 'text-green-700' : 'text-red-700'"
-          >
-            <span>💰</span> Boshlang'ich sarmoya
+        <div class="rounded-xl border border-red-100 bg-red-50/50 p-5 text-center">
+          <div class="mb-1 flex items-center justify-center gap-2 text-sm font-semibold text-red-700">
+            <Icon name="lucide:wallet" class="h-5 w-5" /> Loyiha boshida kiritiladigan mablag'
           </div>
           <p class="text-3xl font-extrabold">{{ format(result.investment) }}</p>
           <p class="text-sm text-slate-500">mln so'm</p>
         </div>
 
-        <div class="hidden text-2xl text-slate-400 lg:block">→</div>
+        <Icon name="lucide:arrow-right" class="hidden h-6 w-6 text-slate-400 lg:block" />
 
-        <div class="rounded-xl border border-slate-200 bg-white p-5 text-center">
+        <div class="rounded-xl border border-blue-100 bg-blue-50 p-5 text-center">
           <div
             class="mb-1 flex items-center justify-center gap-2 text-sm font-semibold"
-            :class="result.dppFound ? 'text-green-700' : 'text-orange-600'"
+            :class="result.dppFound ? 'text-blue-700' : 'text-orange-600'"
           >
-            <span>🪙</span> Har yili keladigan sof foyda
+            <Icon name="lucide:coins" class="h-5 w-5" /> Yillik iqtisodiy samara
           </div>
           <p class="text-3xl font-extrabold">{{ format(result.cashFlow) }}</p>
           <p class="text-sm text-slate-500">mln so'm</p>
         </div>
 
-        <div class="hidden text-2xl text-slate-400 lg:block">→</div>
+        <Icon name="lucide:arrow-right" class="hidden h-6 w-6 text-slate-400 lg:block" />
 
         <div class="rounded-xl border border-slate-200 bg-white p-5">
           <div
             class="mb-1 flex items-center gap-2 text-sm font-semibold"
             :class="result.dppFound ? 'text-green-700' : 'text-red-700'"
           >
-            <span>🕐</span> Natija
+            <Icon name="lucide:clock" class="h-5 w-5" /> Natija
           </div>
           <p
             class="text-sm font-bold leading-relaxed"
@@ -241,10 +255,7 @@
       v-if="result"
       class="mb-4 flex items-center gap-2.5 rounded-xl bg-blue-50 px-4 py-3 text-sm font-medium text-blue-800"
     >
-      <span
-        class="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-blue-600 text-xs text-white"
-        >i</span
-      >
+      <Icon name="lucide:info" class="h-5 w-5 flex-none text-blue-600" />
       Hisoblash avtomatik ravishda amalga oshirildi. Formula va hisoblash
       jarayonini pastda ko'rishingiz mumkin.
     </div>
@@ -252,10 +263,11 @@
     <!-- Batafsil hisob-kitob -->
     <div v-if="result" class="text-center">
       <button
-        class="rounded-lg border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold transition hover:bg-slate-50"
+        class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold transition hover:bg-slate-50"
         @click="showDetails = !showDetails"
       >
-        {{ showDetails ? "▲ Batafsil hisob-kitobni yopish" : "▼ Batafsil hisob-kitobni ko'rish" }}
+        <Icon :name="showDetails ? 'lucide:chevron-up' : 'lucide:chevron-down'" class="h-4 w-4" />
+        {{ showDetails ? "Batafsil hisob-kitobni yopish" : "Batafsil hisob-kitobni ko'rish" }}
       </button>
 
       <div
@@ -272,10 +284,14 @@
         </p>
 
         <p
-          class="mb-4 font-semibold"
+          class="mb-4 flex items-center gap-1.5 font-semibold"
           :class="result.dppFound ? 'text-green-700' : 'text-red-600'"
         >
-          {{ result.dppFound ? '✅' : '❌' }} DPP =
+          <Icon
+            :name="result.dppFound ? 'lucide:circle-check' : 'lucide:circle-x'"
+            class="h-4 w-4 flex-none"
+          />
+          DPP =
           {{ result.dppFound
             ? result.dpp.toFixed(2) + " yil"
             : result.maxYears + " yilda qoplanmaydi" }}

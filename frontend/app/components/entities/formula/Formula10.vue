@@ -24,9 +24,10 @@
     <div class="mb-6 rounded-xl border-2 border-blue-200 bg-white p-6">
       <div class="mb-5 flex items-center gap-4">
         <span
-          class="flex h-14 w-14 flex-none items-center justify-center rounded-full bg-blue-700 text-2xl"
-          >🎯</span
+          class="flex h-14 w-14 flex-none items-center justify-center rounded-full bg-blue-700 text-white"
         >
+          <Icon name="lucide:target" class="h-7 w-7" />
+        </span>
         <h2 class="text-lg font-bold leading-snug sm:text-xl">
           Tizim loyihaning samaradorlik foizini hisoblaydi va belgilangan eng
           kam foiz bilan <span class="text-blue-600">solishtiradi</span>.
@@ -38,14 +39,14 @@
           <span class="text-3xl font-extrabold text-blue-600">1</span>
           <p class="text-sm font-semibold">Samaradorlik foizi hisoblanadi</p>
         </div>
-        <div class="hidden text-2xl text-blue-400 lg:block">→</div>
+        <Icon name="lucide:arrow-right" class="hidden h-6 w-6 text-blue-400 lg:block" />
         <div class="flex items-center gap-3 rounded-xl border border-blue-100 bg-blue-50 p-4">
           <span class="text-3xl font-extrabold text-blue-600">2</span>
           <p class="text-sm font-semibold">
             Belgilangan eng kam foiz bilan solishtiriladi
           </p>
         </div>
-        <div class="hidden text-2xl text-blue-400 lg:block">→</div>
+        <Icon name="lucide:arrow-right" class="hidden h-6 w-6 text-blue-400 lg:block" />
         <div class="flex items-center gap-3 rounded-xl border border-blue-100 bg-blue-50 p-4">
           <span class="text-3xl font-extrabold text-blue-600">3</span>
           <p class="text-sm font-semibold">
@@ -59,7 +60,7 @@
     <div class="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <div class="rounded-xl border border-slate-200 bg-white p-5">
         <div class="mb-3 flex items-center gap-2.5">
-          <span class="text-2xl">📈</span>
+          <Icon name="lucide:trending-up" class="h-6 w-6 text-green-600" />
           <h3 class="font-bold">Nimani ko'rsatadi?</h3>
         </div>
         <p class="text-sm leading-relaxed text-slate-700">
@@ -69,7 +70,7 @@
 
       <div class="rounded-xl border border-slate-200 bg-white p-5">
         <div class="mb-3 flex items-center gap-2.5">
-          <span class="text-2xl">🎯</span>
+          <Icon name="lucide:target" class="h-6 w-6 text-purple-600" />
           <h3 class="font-bold">Taqqoslash foizi</h3>
         </div>
         <p class="text-sm leading-relaxed text-slate-700">
@@ -79,7 +80,7 @@
 
       <div class="rounded-xl border border-slate-200 bg-white p-5">
         <div class="mb-3 flex items-center gap-2.5">
-          <span class="text-2xl">🏛️</span>
+          <Icon name="lucide:landmark" class="h-6 w-6 text-blue-600" />
           <h3 class="font-bold">Qaysi loyihalar uchun?</h3>
         </div>
         <p class="text-sm leading-relaxed text-slate-700">
@@ -89,7 +90,7 @@
 
       <div class="rounded-xl border border-slate-200 bg-white p-5">
         <div class="mb-3 flex items-center gap-2.5">
-          <span class="text-2xl">⚖️</span>
+          <Icon name="lucide:scale" class="h-6 w-6 text-orange-500" />
           <h3 class="font-bold">Farqi nimada?</h3>
         </div>
         <p class="text-sm leading-relaxed text-slate-700">
@@ -101,7 +102,9 @@
     <!-- Kalkulyator -->
     <div class="mb-6 rounded-xl border border-slate-200 bg-white p-6">
       <div class="mb-1 flex items-center gap-2.5">
-        <span class="text-2xl">🧮</span>
+        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
+          <Icon name="lucide:calculator" class="h-5 w-5" />
+        </span>
         <h2 class="text-lg font-bold">EIRR kalkulyatori — Davlat loyihalari</h2>
       </div>
       <p class="mb-5 text-sm text-slate-600">
@@ -110,37 +113,77 @@
       </p>
 
       <el-form ref="formRef" :model="form" :rules="rules" label-position="top">
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          <el-form-item label="Loyiha boshida kiritiladigan mablag' (mln so'm)" prop="initialCost">
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <el-form-item prop="initialCost">
+            <template #label>
+              <span class="inline-flex items-center gap-2">
+                <span class="flex h-7 w-7 flex-none items-center justify-center rounded-md bg-blue-600 text-white">
+                  <Icon name="lucide:wallet" class="h-4 w-4" />
+                </span>
+                Loyiha boshida kiritiladigan mablag' (mln so'm)
+              </span>
+            </template>
             <el-input v-model.number="form.initialCost" type="number" placeholder="Masalan: 800" />
             <p class="mt-1.5 text-xs text-slate-500">
               Loyihani boshlash uchun sarflanadigan jami mablag'.
             </p>
           </el-form-item>
 
-          <el-form-item label="Har yili kutiladigan sof foyda (mln so'm)" prop="annualBenefit">
+          <el-form-item prop="annualBenefit">
+            <template #label>
+              <span class="inline-flex items-center gap-2">
+                <span class="flex h-7 w-7 flex-none items-center justify-center rounded-md bg-green-600 text-white">
+                  <Icon name="lucide:coins" class="h-4 w-4" />
+                </span>
+                Loyihadan kutilayotgan yillik iqtisodiy samara (mln so'm)
+              </span>
+            </template>
             <el-input v-model.number="form.annualBenefit" type="number" placeholder="Masalan: 150" />
             <p class="mt-1.5 text-xs text-slate-500">
-              Daromaddan barcha xarajatlar chiqarilgandan keyin har yili qolishi
-              kutiladigan foyda.
+              Barcha xarajatlar hisobga olingandan keyin kutilayotgan yillik
+              iqtisodiy samara.
             </p>
           </el-form-item>
 
-          <el-form-item label="Loyiha necha yil davom etadi? (yil)" prop="years">
+          <el-form-item prop="years">
+            <template #label>
+              <span class="inline-flex items-center gap-2">
+                <span class="flex h-7 w-7 flex-none items-center justify-center rounded-md bg-green-600 text-white">
+                  <Icon name="lucide:calendar-days" class="h-4 w-4" />
+                </span>
+                Loyiha necha yil davom etadi? (yil)
+              </span>
+            </template>
             <el-input v-model.number="form.years" type="number" placeholder="Masalan: 10" />
             <p class="mt-1.5 text-xs text-slate-500">
               Loyiha amal qiladigan yillar soni.
             </p>
           </el-form-item>
 
-          <el-form-item label="Kerakli eng kam foiz (%)" prop="minRate">
+          <el-form-item prop="minRate">
+            <template #label>
+              <span class="inline-flex items-center gap-2">
+                <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-purple-700 text-white">
+                  <Icon name="lucide:percent" class="h-4 w-4" />
+                </span>
+                Loyihani amalga oshirish uchun kerakli eng kam foiz (%)
+              </span>
+            </template>
             <el-input v-model.number="form.minRate" type="number" step="0.1" placeholder="Masalan: 12" />
             <p class="mt-1.5 text-xs text-slate-500">
               Hisoblangan foiz shu ko'rsatkich bilan solishtiriladi.
             </p>
           </el-form-item>
 
-          <el-form-item label="Xavf darajasi (%)" prop="risk">
+          <el-form-item prop="risk">
+            <template #label>
+              <span class="inline-flex items-center gap-2">
+                <span class="flex h-7 w-7 flex-none items-center justify-center rounded-md bg-red-500 text-white">
+                  <Icon name="lucide:shield-alert" class="h-4 w-4" />
+                </span>
+                Xavf darajasi (%)
+              </span>
+            </template>
             <el-input v-model.number="form.risk" type="number" step="0.1" placeholder="Masalan: 5" />
             <p class="mt-1.5 text-xs text-slate-500">
               Loyiha xavfi — 25% dan oshmasligi kerak.
@@ -154,13 +197,13 @@
           class="flex items-center gap-2 rounded-lg bg-blue-800 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
           @click="calculate"
         >
-          <span>🧮</span> Hisoblash
+          <Icon name="lucide:calculator" class="h-4 w-4" /> Hisoblash
         </button>
         <button
           class="flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold transition hover:bg-slate-50"
           @click="reset"
         >
-          <span>🗑️</span> Tozalash
+          <Icon name="lucide:trash-2" class="h-4 w-4" /> Tozalash
         </button>
       </div>
 
@@ -176,16 +219,16 @@
       <!-- Sarlavha -->
       <div class="mb-1 flex items-center gap-3">
         <span
-          class="flex h-11 w-11 items-center justify-center rounded-full text-xl text-white"
+          class="flex h-11 w-11 items-center justify-center rounded-full text-white"
           :class="result.ok ? 'bg-green-600' : 'bg-red-600'"
         >
-          {{ result.ok ? '✓' : '✕' }}
+          <Icon :name="result.ok ? 'lucide:check' : 'lucide:x'" class="h-6 w-6" />
         </span>
         <h2
           class="text-xl font-extrabold sm:text-2xl"
           :class="result.ok ? 'text-green-700' : 'text-red-600'"
         >
-          {{ result.ok ? 'Loyihani amalga oshirish mumkin' : 'Loyiha amalga oshirish tavsiya etilmaydi' }}
+          {{ result.ok ? 'Loyihani amalga oshirish tavsiya etiladi' : 'Loyiha amalga oshirish tavsiya etilmaydi' }}
         </h2>
       </div>
       <p class="mb-5 ml-14 text-sm" :class="result.ok ? 'text-green-800' : 'text-red-800'">
@@ -196,36 +239,39 @@
 
       <!-- 3 ta karta -->
       <div class="grid items-center gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
-        <div class="rounded-xl border border-slate-200 bg-white p-5 text-center">
-          <div
-            class="mb-1 flex items-center justify-center gap-2 text-sm font-semibold"
-            :class="result.ok ? 'text-green-700' : 'text-red-700'"
-          >
-            <span>💰</span> Loyiha boshida kiritilgan mablag'
+        <div class="rounded-xl border border-red-100 bg-red-50/50 p-5 text-center">
+          <div class="mb-1 flex items-center justify-center gap-2 text-sm font-semibold text-red-700">
+            <Icon name="lucide:wallet" class="h-5 w-5" /> Loyiha boshida kiritilgan mablag'
           </div>
           <p class="text-3xl font-extrabold">{{ format(result.initialCost) }}</p>
           <p class="text-sm text-slate-500">mln so'm</p>
         </div>
 
-        <div class="hidden text-2xl text-slate-400 lg:block">→</div>
+        <Icon name="lucide:arrow-right" class="hidden h-6 w-6 text-slate-400 lg:block" />
 
         <div class="rounded-xl border border-blue-100 bg-blue-50 p-5 text-center">
           <div class="mb-1 flex items-center justify-center gap-2 text-sm font-semibold text-blue-700">
-            <span>📊</span> Hisoblangan samaradorlik foizi
+            <Icon name="lucide:chart-column" class="h-5 w-5" /> Hisoblangan samaradorlik foizi
           </div>
           <p class="text-3xl font-extrabold">
             {{ result.eirr !== null ? formatPct(result.eirr) + ' %' : '—' }}
           </p>
         </div>
 
-        <div class="hidden text-2xl text-slate-400 lg:block">→</div>
+        <Icon name="lucide:arrow-right" class="hidden h-6 w-6 text-slate-400 lg:block" />
 
         <div class="rounded-xl border border-slate-200 bg-white p-5">
           <div
             class="mb-1 flex items-center gap-2 text-sm font-semibold"
             :class="result.ok ? 'text-green-700' : 'text-red-700'"
           >
-            <span>{{ result.ok ? '✅' : '❌' }}</span> Natija
+            <span
+              class="flex h-6 w-6 flex-none items-center justify-center rounded-full text-white"
+              :class="result.ok ? 'bg-green-600' : 'bg-red-600'"
+            >
+              <Icon :name="result.ok ? 'lucide:check' : 'lucide:x'" class="h-4 w-4" />
+            </span>
+            Natija
           </div>
           <p
             class="text-sm font-bold leading-relaxed"
@@ -255,10 +301,7 @@
       v-if="result"
       class="mb-4 flex items-center gap-2.5 rounded-xl bg-blue-50 px-4 py-3 text-sm font-medium text-blue-800"
     >
-      <span
-        class="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-blue-600 text-xs text-white"
-        >i</span
-      >
+      <Icon name="lucide:info" class="h-5 w-5 flex-none text-blue-600" />
       Hisoblash avtomatik ravishda bajarildi. Formula va hisoblash jarayonini
       ko'rishingiz mumkin.
     </div>
@@ -266,10 +309,11 @@
     <!-- Batafsil hisoblash -->
     <div v-if="result" class="text-center">
       <button
-        class="rounded-lg border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold transition hover:bg-slate-50"
+        class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold transition hover:bg-slate-50"
         @click="showDetails = !showDetails"
       >
-        {{ showDetails ? '▲ Batafsil hisoblashni yopish' : '▼ Batafsil hisoblashni ko\'rish' }}
+        <Icon :name="showDetails ? 'lucide:chevron-up' : 'lucide:chevron-down'" class="h-4 w-4" />
+        {{ showDetails ? 'Batafsil hisoblashni yopish' : "Batafsil hisoblashni ko'rish" }}
       </button>
 
       <div

@@ -1,10 +1,10 @@
 {
   "projects": [
     {
-      "name": "Test loyiha",
+      "name": "Test loyiha ",
       "type": "Sanoat",
       "year": "2026",
-      "investmentType": "xususiy",
+      "investmentType": "davlat",
       "organization": "Test tashkilot",
       "country": "O'zbekiston",
       "guarantorBank": "Xalq banki",
@@ -12,9 +12,15 @@
       "businessPlan": "/uploads/1783271079451-823701220-bp.txt",
       "passportFile": "/uploads/1783271079453-629622928-passport.txt",
       "createdAt": "2026-07-05T17:04:39.454Z",
-      "updatedAt": "2026-07-05T17:04:39.454Z",
+      "updatedAt": "2026-07-06T06:53:08.502Z",
       "status": "DR",
-      "id": 1
+      "id": 1,
+      "regions": [
+        11
+      ],
+      "districts": [
+        157
+      ]
     },
     {
       "name": "asdsad",
@@ -135,6 +141,15 @@
       "createdAt": "2026-07-05T23:17:41.307Z",
       "updatedAt": "2026-07-05T23:17:41.307Z",
       "id": 8
+    },
+    {
+      "name": "sad",
+      "startDate": "2026-07-22",
+      "endDate": "2026-07-31",
+      "projectId": 1,
+      "createdAt": "2026-07-06T06:19:11.803Z",
+      "updatedAt": "2026-07-06T06:19:11.803Z",
+      "id": 9
     }
   ]
 }

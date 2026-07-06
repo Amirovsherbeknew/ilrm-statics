@@ -15,11 +15,6 @@
         label-position="top"
         class="grid grid-cols-1 md:grid-cols-2 gap-x-3"
       >
-
-        
-
-        
-
         <div class="grid grid-cols-3 gap-2 col-span-2">
           <!-- 1) Loyiha nomi -->
           <el-form-item label="Loyiha nomi" prop="name">
@@ -260,7 +255,7 @@ const formRef = ref(null);
 const loading = ref(false);
 
 const activeStep = defineModel()
-const emit = defineEmits(["created"]);
+const emit = defineEmits(["created","update"]);
 
 // ====== Tanlov ro'yxatlari (o'zingizga moslab o'zgartiring) ======
 const projectTypes = [
@@ -447,7 +442,7 @@ async function handleSubmit() {
         ElMessage.error(error.value?.data?.message || "Loyihani saqlashda xatolik yuz berdi");
         return;
       }
-
+      emit('update')
       ElMessage.success("Loyiha muvaffaqiyatli yangilandi");
       activeStep.value = 2;
       return;
@@ -484,6 +479,7 @@ async function handleSubmit() {
     }
 
     ElMessage.success("Loyiha muvaffaqiyatli saqlandi");
+    emit('update')
     router.replace({
       query:{
         id:data.value?.id

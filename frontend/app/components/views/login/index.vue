@@ -26,7 +26,7 @@
     >
       <!-- Left panel -->
       <div
-        class="relative md:max-w-1/2 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-600 p-6 flex items-center justify-center overflow-hidden"
+        class="relative md:w-1/2 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-600 p-6 flex items-center justify-center overflow-hidden"
       >
         <!-- Panel decoration -->
         <div
@@ -56,14 +56,10 @@
           />
 
           <h1 class="text-sm md:text-base font-bold text-gray-900 leading-relaxed">
-            O‘zbekiston Respublikasi Kambag‘allikni
+            O‘zbekiston Respublikasi Kambag‘allikni qisqartirish va bandlik vazirligi huzuridagi 
             <br />
-            qisqartirish va bandlik vazirligi
+            Kambag‘allik va mehnat bozori tadqiqotlari instituti
           </h1>
-
-          <p class="text-xs text-gray-500 mt-4">
-            Vazirlikning intellektual mulki
-          </p>
         </div>
       </div>
 
@@ -111,14 +107,6 @@
             />
           </el-form-item>
 
-          <el-alert
-            v-if="errorMsg"
-            :title="errorMsg"
-            type="error"
-            :closable="false"
-            class="mb-3"
-          />
-
           <el-button
             type="primary"
             native-type="submit"
@@ -143,7 +131,6 @@ const { setAccessToken, setRole } = useToken()
 
 const formRef = ref(null);
 const loading = ref(false);
-const errorMsg = ref("");
 
 const form = reactive({
   username: "",
@@ -158,8 +145,6 @@ const rules = {
 async function handleLogin() {
   if (!formRef.value) return;
 
-  errorMsg.value = "";
-
   await formRef.value.validate(async (valid) => {
     if (!valid) return;
 
@@ -171,7 +156,8 @@ async function handleLogin() {
     });
 
     if (error.value) {
-      errorMsg.value = error.value?.data?.message || "Login yoki parol noto'g'ri";
+
+      ElMessage.error(`Login yoki parol noto'g'ri`)
       loading.value = false;
       return;
     }

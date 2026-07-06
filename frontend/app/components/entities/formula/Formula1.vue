@@ -18,7 +18,9 @@
     <!-- Kalkulyator kartasi -->
     <div class="mb-6 rounded-xl border border-slate-200 bg-white p-6">
       <div class="mb-1 flex items-center gap-2.5">
-        <span class="text-2xl">🧮</span>
+        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
+          <Icon name="lucide:calculator" class="h-5 w-5" />
+        </span>
         <h2 class="text-lg font-bold">{{ current.title }}</h2>
       </div>
       <p class="mb-5 text-sm text-slate-500">{{ current.subtitle }}</p>
@@ -39,14 +41,25 @@
             <p v-if="field.hint" class="mt-1.5 text-xs text-slate-500">
               {{ field.hint }}
             </p>
+            <!-- Xavf darajasi legendasi (faqat xavf maydonlari uchun) -->
+            <div
+              v-if="RISK_FIELD_KEYS.includes(field.key)"
+              class="mt-1.5 space-y-0.5 text-xs"
+            >
+              <p><span class="font-semibold text-green-600">1–4%</span> — past xavf</p>
+              <p><span class="font-semibold text-amber-500">5–14%</span> — o'rtacha xavf</p>
+              <p><span class="font-semibold text-red-600">15% va yuqori</span> — yuqori xavf</p>
+            </div>
           </div>
         </div>
 
         <div class="mt-4 flex gap-3">
           <el-button type="primary" class="!bg-blue-800 !border-blue-800" @click="calculate(active)">
-            🧮 Hisoblash
+            <Icon name="lucide:calculator" class="mr-1.5 h-4 w-4" /> Hisoblash
           </el-button>
-          <el-button @click="reset(active)">🗑️ Tozalash</el-button>
+          <el-button @click="reset(active)">
+            <Icon name="lucide:trash-2" class="mr-1.5 h-4 w-4" /> Tozalash
+          </el-button>
         </div>
       </el-form>
     </div>
@@ -62,10 +75,13 @@
       <!-- Sarlavha -->
       <div class="mb-1 flex items-center gap-3">
         <span
-          class="flex h-11 w-11 items-center justify-center rounded-full text-xl text-white"
+          class="flex h-11 w-11 items-center justify-center rounded-full text-white"
           :class="results[active].npv >= 0 ? 'bg-green-600' : 'bg-red-600'"
         >
-          {{ results[active].npv >= 0 ? '✓' : '✕' }}
+          <Icon
+            :name="results[active].npv >= 0 ? 'lucide:check' : 'lucide:x'"
+            class="h-6 w-6"
+          />
         </span>
         <h2
           class="text-xl font-extrabold sm:text-2xl"
@@ -89,23 +105,23 @@
       <div class="grid items-center gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
         <div class="rounded-xl border border-red-200 bg-white p-5 text-center">
           <div class="mb-1 flex items-center justify-center gap-2 text-sm font-semibold text-red-700">
-            <span>💰</span> Boshlang'ich mablag'
+            <Icon name="lucide:wallet" class="h-5 w-5" /> Boshlang'ich mablag'
           </div>
           <p class="text-3xl font-extrabold">{{ format(results[active].investment) }}</p>
           <p class="text-sm text-slate-500">mln so'm</p>
         </div>
 
-        <div class="hidden text-2xl text-slate-400 lg:block">→</div>
+        <Icon name="lucide:arrow-right" class="hidden h-6 w-6 text-slate-400 lg:block" />
 
         <div class="rounded-xl border border-blue-200 bg-blue-50 p-5 text-center">
           <div class="mb-1 flex items-center justify-center gap-2 text-sm font-semibold text-blue-700">
-            <span>📊</span> Bugungi hisobdagi jami foyda
+            <Icon name="lucide:chart-column" class="h-5 w-5" /> Bugungi qiymatdagi jami iqtisodiy samara
           </div>
           <p class="text-3xl font-extrabold text-blue-900">{{ format(results[active].sumPv) }}</p>
           <p class="text-sm text-slate-500">mln so'm</p>
         </div>
 
-        <div class="hidden text-2xl text-slate-400 lg:block">→</div>
+        <Icon name="lucide:arrow-right" class="hidden h-6 w-6 text-slate-400 lg:block" />
 
         <div
           class="rounded-xl border bg-white p-5 text-center"
@@ -115,8 +131,8 @@
             class="mb-1 flex items-center justify-center gap-2 text-sm font-semibold"
             :class="results[active].npv >= 0 ? 'text-green-700' : 'text-red-700'"
           >
-            <span>🪙</span>
-            {{ results[active].npv >= 0 ? 'Sof foyda' : "Qo'shimcha foyda (zarar)" }}
+            <Icon name="lucide:coins" class="h-5 w-5" />
+            {{ results[active].npv >= 0 ? 'Sof iqtisodiy samara' : 'Sof iqtisodiy samara (zarar)' }}
           </div>
           <p
             class="text-3xl font-extrabold"
@@ -147,10 +163,7 @@
       v-if="results[active]"
       class="mb-4 flex items-center gap-2.5 rounded-xl bg-blue-50 px-4 py-3 text-sm font-medium text-blue-800"
     >
-      <span
-        class="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-blue-600 text-xs text-white"
-        >i</span
-      >
+      <Icon name="lucide:info" class="h-5 w-5 flex-none text-blue-600" />
       Diskontlash avtomatik tarzda bajarildi. Formula va hisoblash jarayonini
       pastda ko'rishingiz mumkin.
     </div>
@@ -158,10 +171,11 @@
     <!-- Batafsil hisob-kitob -->
     <div v-if="results[active]" class="text-center">
       <button
-        class="rounded-lg border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold transition hover:bg-slate-50"
+        class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold transition hover:bg-slate-50"
         @click="showDetails = !showDetails"
       >
-        {{ showDetails ? "▲ Batafsil hisob-kitobni yopish" : "▼ Batafsil hisob-kitobni ko'rish" }}
+        <Icon :name="showDetails ? 'lucide:chevron-up' : 'lucide:chevron-down'" class="h-4 w-4" />
+        {{ showDetails ? "Batafsil hisob-kitobni yopish" : "Batafsil hisob-kitobni ko'rish" }}
       </button>
 
       <div
@@ -240,16 +254,16 @@ const calculators = [
     subtitle: 'r = inflyatsiya + mamlakat xavfi (yoki World Bank tayyor stavkasi)',
     fields: [
       { key: 'inflation', label: 'Yillik inflyatsiya (%)', hint: 'Masalan: 9', default: 9 },
-      { key: 'countryRisk', label: 'Mamlakat xavfi (%)', hint: 'Masalan: 3', default: 3 },
-      { key: 'investment', label: "Loyihaga sarflanadigan mablag' (mln so'm)", hint: "Boshlang'ich qo'yilma", default: 800 },
-      { key: 'cashFlow', label: "Har yili davlatga keladigan foyda (mln so'm)", hint: 'Yillik daromad minus xarajat', default: 150 },
+      { key: 'countryRisk', label: 'Mamlakatdagi xavf darajasi (%)', hint: "Investitsiyaga ta'sir qilishi mumkin bo'lgan mamlakatdagi iqtisodiy va siyosiy xavf darajasi.", default: 3 },
+      { key: 'investment', label: "Loyiha boshida kiritiladigan mablag' (mln so'm)", hint: "Boshida kiritiladigan mablag'", default: 800 },
+      { key: 'cashFlow', label: "Loyihadan kutilayotgan yillik iqtisodiy samara (mln so'm)", hint: "Barcha xarajatlar hisobga olingandan keyin kutilayotgan yillik iqtisodiy samara.", default: 150 },
       { key: 'years', label: 'Loyiha necha yil davom etadi?', hint: 'Yillar soni', default: 10 }
     ],
     getR: (f) => f.inflation + f.countryRisk,
     rFormula: (f, r) => `r = ${f.inflation}% (inflyatsiya) + ${f.countryRisk}% (mamlakat xavfi) = ${r}%`,
     summary: (f, res) =>
       res.npv >= 0
-        ? `Loyiha xarajatlarini qoplaydi va davlatga qo'shimcha ${res.npv.toFixed(2)} mln so'm sof foyda keltiradi.`
+        ? `Loyiha xarajatlarni qoplaydi va davlatga qo'shimcha ${res.npv.toFixed(2)} mln so'm sof foyda keltiradi.`
         : `Loyihaga kiritilgan mablag' to'liq qoplanmaydi. ${Math.abs(res.npv).toFixed(2)} mln so'm zarar keltiradi.`
   },
   {

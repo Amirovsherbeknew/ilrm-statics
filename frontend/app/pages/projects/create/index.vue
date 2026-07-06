@@ -3,7 +3,7 @@
       <div class="w-full px-3">
         <Steps :active="active" class="mx-auto" />
       </div>
-      <views-projects-create v-if="active === 1" v-model="active" :project-info="projectInfo"/>
+      <views-projects-create v-if="active === 1" v-model="active" :project-info="projectInfo" @update="getProjectInfo"/>
       <views-projects-stage v-if="active === 2" v-model="active" :project-info="projectInfo"/>
       <views-projects-calculate v-if="active === 3" v-model="active" :project-info="projectInfo"/>
   </div>

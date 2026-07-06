@@ -7,7 +7,7 @@ const router = express.Router();
 
 const users = [
   {
-    username: 'hokimiyat',
+    username: 'hokimiyat_yordamchisi',
     passwordHash: bcrypt.hashSync('12345', 10),
     role: 'hokimiyat'
   },
