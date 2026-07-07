@@ -1,98 +1,6 @@
 <template>
   <section class="mx-auto max-w-6xl bg-white rounded-[16px] px-4 py-8 font-sans text-slate-900">
-    <!-- Sarlavha -->
-    <p class="mb-1 text-xs font-bold uppercase tracking-widest text-blue-600">
-      Formula 8
-    </p>
-    <h1 class="mb-5 text-3xl font-extrabold text-white sm:text-4xl">
-      BCR — Har 1 so'm xarajat qancha foyda keltiradi?
-    </h1>
-
-    <!-- To'q ko'k banner -->
-    <div class="mb-6 flex items-center gap-4 rounded-xl bg-blue-950 px-5 py-4 text-white">
-      <span class="rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold">BCR</span>
-      <p class="text-sm font-semibold sm:text-base">
-        Bu hisob-kitob har 1 so'm xarajat evaziga qancha so'm foyda olinishini
-        ko'rsatadi.
-      </p>
-    </div>
-
-    <!-- 4 ta info karta -->
-    <div class="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:trending-up" class="h-6 w-6 text-green-600" />
-          <h3 class="font-bold">Nimani ko'rsatadi?</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-slate-700">
-          Har 1 so'm xarajat qancha foyda keltirishini baholaydi.
-        </p>
-      </div>
-
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:target" class="h-6 w-6 text-purple-600" />
-          <h3 class="font-bold">Qoida</h3>
-        </div>
-        <ul class="space-y-2 text-sm leading-relaxed text-slate-700">
-          <li class="flex items-start gap-2">
-            <Icon name="lucide:circle-check" class="mt-0.5 h-4 w-4 flex-none text-green-600" />
-            <span>1 dan yuqori — loyiha foydali</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <Icon name="lucide:circle-minus" class="mt-0.5 h-4 w-4 flex-none text-amber-500" />
-            <span>1 ga teng — foyda ham, zarar ham yo'q</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <Icon name="lucide:circle-x" class="mt-0.5 h-4 w-4 flex-none text-red-600" />
-            <span>1 dan past — loyiha zararli</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:landmark" class="h-6 w-6 text-blue-600" />
-          <h3 class="font-bold">Qaysi loyihalar uchun?</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-slate-700">
-          Yo'l, maktab, shifoxona va boshqa davlat loyihalari uchun.
-        </p>
-      </div>
-
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:scale" class="h-6 w-6 text-orange-500" />
-          <h3 class="font-bold">Farqi nimada?</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-slate-700">
-          Har 1 so'm xarajatga qancha foyda to'g'ri kelishini ko'rsatadi.
-        </p>
-      </div>
-    </div>
-
-    <!-- Formula banneri -->
-    <div
-      class="mb-6 flex flex-col gap-4 rounded-xl bg-blue-950 px-6 py-5 text-white sm:flex-row sm:items-center"
-    >
-      <div class="flex flex-none items-center gap-3">
-        <span class="text-lg font-bold">BCR =</span>
-        <div class="text-center font-bold">
-          <p class="border-b-2 border-white px-2 pb-1">PV (Foyda)</p>
-          <p class="px-2 pt-1">PV (Xarajat)</p>
-        </div>
-      </div>
-      <div class="space-y-1.5 text-sm leading-relaxed sm:border-l sm:border-blue-800 sm:pl-6">
-        <p>
-          <span class="font-bold">PV (Foyda)</span> — barcha yillar bo'yicha
-          keltirilgan (diskontlangan) foydalar yig'indisi
-        </p>
-        <p>
-          <span class="font-bold">PV (Xarajat)</span> — barcha yillar bo'yicha
-          keltirilgan (diskontlangan) xarajatlar yig'indisi
-        </p>
-      </div>
-    </div>
+    
 
     <!-- Kalkulyator -->
     <div class="mb-6 rounded-xl border border-slate-200 bg-white p-6">
@@ -100,7 +8,7 @@
         <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
           <Icon name="lucide:calculator" class="h-5 w-5" />
         </span>
-        <h2 class="text-lg font-bold">BCR kalkulyatori</h2>
+        <h2 class="text-[28px] font-bold">Har 1 so’mga qancha foyda to’g’ri kelishini hisoblash kalkulyatori</h2>
       </div>
 
       <el-form ref="formRef" :model="form" :rules="rules" label-position="top">

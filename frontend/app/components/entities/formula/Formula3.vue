@@ -1,80 +1,8 @@
 <template>
   <section class="mx-auto max-w-6xl bg-white rounded-[16px] px-4 py-8 font-sans text-slate-900">
-    <!-- Sarlavha -->
-    <p class="mb-1 text-xs font-bold uppercase tracking-widest text-blue-600">
-      Formula 3
-    </p>
-    <h1 class="mb-5 text-3xl font-extrabold text-slate-900 sm:text-4xl">
-      Loyiha qancha vaqtda o'zini qoplaydi?
-    </h1>
 
-    <!-- To'q ko'k banner -->
-    <div class="mb-6 flex items-center gap-4 rounded-xl bg-blue-950 px-5 py-4 text-white">
-      <span class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-blue-900">
-        <Icon name="lucide:clock" class="h-6 w-6" />
-      </span>
-      <p class="text-sm font-semibold sm:text-base !text-white">
-        Bu hisob-kitob loyihaga kiritilgan sarmoya qancha vaqtda qaytib
-        kelishini ko'rsatadi.
-      </p>
-    </div>
 
-    <!-- 4 ta info karta -->
-    <div class="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:info" class="h-6 w-6 text-blue-600" />
-          <h3 class="font-bold">Nimani ko'rsatadi?</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-slate-700">
-          Loyihaga kiritilgan mablag' necha yilda to'liq qaytib kelishini
-          baholaydi.
-        </p>
-      </div>
-
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:target" class="h-6 w-6 text-purple-600" />
-          <h3 class="font-bold">Qanday hisoblanadi?</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-slate-700">
-          Har yili sof foyda orqali boshlang'ich sarmoya necha yilda
-          qoplanishini hisoblaydi. Inflyatsiya hisobga olinsa, muddat uzayishi
-          mumkin.
-        </p>
-      </div>
-
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:landmark" class="h-6 w-6 text-blue-600" />
-          <h3 class="font-bold">Qaysi loyihalar uchun?</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-slate-700">
-          Barcha davlat va tijorat loyihalari uchun qo'llaniladi.
-        </p>
-      </div>
-
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:clock" class="h-6 w-6 text-orange-500" />
-          <h3 class="font-bold">Qoida</h3>
-        </div>
-        <ul class="space-y-2 text-sm leading-relaxed text-slate-700">
-          <li class="flex items-start gap-2">
-            <Icon name="lucide:circle-check" class="mt-0.5 h-4 w-4 flex-none text-green-600" />
-            <span>Qisqa muddat — yaxshi</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <Icon name="lucide:circle-minus" class="mt-0.5 h-4 w-4 flex-none text-amber-500" />
-            <span>Uzoq muddat — kamroq samarali</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <Icon name="lucide:circle-x" class="mt-0.5 h-4 w-4 flex-none text-red-600" />
-            <span>Juda uzoq muddat — tavsiya etilmaydi</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+    
 
     <!-- Kalkulyator -->
     <div class="mb-6 rounded-xl border border-slate-200 bg-white p-6">
@@ -82,7 +10,7 @@
         <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
           <Icon name="lucide:calculator" class="h-5 w-5" />
         </span>
-        <h2 class="text-lg font-bold">Hisoblash uchun ma'lumotlar</h2>
+        <h2 class="text-[28px] font-bold">Loyihaning qoplanish muddatini hisoblash kalkulyatori</h2>
       </div>
 
       <el-form ref="formRef" :model="form" :rules="rules" label-position="top" class="pp-form">
@@ -95,9 +23,9 @@
               </template>
               <el-input v-model.number="form.investment" type="number" placeholder="Masalan: 90" />
             </el-form-item>
-            <p class="mt-1.5 text-xs text-slate-500">
+            <!-- <p class="mt-1.5 text-xs text-slate-500">
               Loyihaga kiritiladigan umumiy mablag'.
-            </p>
+            </p> -->
           </div>
 
           <div>
@@ -122,10 +50,6 @@
               </template>
               <el-input v-model.number="form.rate" type="number" placeholder="Masalan: 15" />
             </el-form-item>
-            <p class="mt-1.5 text-xs text-slate-500">
-              Kelajakdagi mablag'ni bugungi qiymatga keltirish uchun
-              qo'llaniladi.
-            </p>
           </div>
 
           <div>
@@ -136,9 +60,9 @@
               </template>
               <el-input v-model.number="form.maxYears" type="number" placeholder="Masalan: 10" />
             </el-form-item>
-            <p class="mt-1.5 text-xs text-slate-500">
+            <!-- <p class="mt-1.5 text-xs text-slate-500">
               Loyihani baholash uchun maksimal yillar soni.
-            </p>
+            </p> -->
           </div>
         </div>
 

@@ -9,10 +9,10 @@
       "country": "O'zbekiston",
       "guarantorBank": "Xalq banki",
       "insuranceCompany": "Kafolat",
-      "businessPlan": "/uploads/1783271079451-823701220-bp.txt",
-      "passportFile": "/uploads/1783271079453-629622928-passport.txt",
+      "businessPlan": "/uploads/1783416344388-650986755-d7879e27-d5c5-4b66-a095-ee71ef0d31e4.pdf",
+      "passportFile": "/uploads/1783416344624-778651567-d7879e27-d5c5-4b66-a095-ee71ef0d31e4.pdf",
       "createdAt": "2026-07-05T17:04:39.454Z",
-      "updatedAt": "2026-07-06T06:53:08.502Z",
+      "updatedAt": "2026-07-07T09:25:44.627Z",
       "status": "DR",
       "id": 1,
       "regions": [
@@ -67,6 +67,34 @@
       "dpp": 4.291690312499999,
       "bcr": 1.4999999999999998,
       "eirr": 35.733279519970594
+    },
+    {
+      "name": "dasd",
+      "type": "Qishloq xo'jaligi",
+      "year": "2026",
+      "investmentType": "xususiy",
+      "organization": "asd",
+      "country": "O'zbekiston",
+      "guarantorBank": "Milliy bank",
+      "insuranceCompany": "Apex Sug'urta",
+      "businessPlan": "/uploads/1783415469679-711820140-----------.xlsx",
+      "passportFile": "/uploads/1783415469912-638034050-----------.xlsx",
+      "regions": [
+        9
+      ],
+      "districts": [
+        128,
+        127,
+        126
+      ],
+      "status": "DR",
+      "npv": null,
+      "dpp": null,
+      "bcr": null,
+      "eirr": null,
+      "createdAt": "2026-07-07T09:11:09.916Z",
+      "updatedAt": "2026-07-07T09:11:09.916Z",
+      "id": 4
     }
   ],
   "stages": [
@@ -150,6 +178,24 @@
       "createdAt": "2026-07-06T06:19:11.803Z",
       "updatedAt": "2026-07-06T06:19:11.803Z",
       "id": 9
+    },
+    {
+      "name": "Qurilish",
+      "startDate": "2026-07-22",
+      "endDate": "2026-07-31",
+      "projectId": 1,
+      "createdAt": "2026-07-07T09:27:36.302Z",
+      "updatedAt": "2026-07-07T09:27:36.302Z",
+      "id": 10
+    },
+    {
+      "name": "asdsa",
+      "startDate": "2026-07-16",
+      "endDate": "2026-07-31",
+      "projectId": 4,
+      "createdAt": "2026-07-07T10:08:56.432Z",
+      "updatedAt": "2026-07-07T10:08:56.432Z",
+      "id": 11
     }
   ]
 }

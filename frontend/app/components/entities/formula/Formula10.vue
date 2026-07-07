@@ -1,103 +1,6 @@
 <template>
   <section class="mx-auto max-w-6xl bg-white rounded-[16px] px-4 py-8 font-sans text-slate-900">
-    <!-- Sarlavha -->
-    <p class="mb-1 text-xs font-bold uppercase tracking-widest text-blue-600">
-      Formula 10
-    </p>
-    <h1 class="mb-5 text-3xl font-extrabold text-slate-900 sm:text-4xl">
-      EIRR — Iqtisodiy ichki daromadlilik normasi
-    </h1>
-
-    <!-- To'q ko'k banner -->
-    <div class="mb-6 flex items-center gap-4 rounded-xl bg-blue-950 px-5 py-4 text-white">
-      <span class="rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-bold">EIRR</span>
-      <div>
-        <p class="font-bold">Loyiha davlat uchun foydalimi?</p>
-        <p class="mt-0.5 text-sm text-blue-200">
-          Bu hisob-kitob loyihaning davlat uchun iqtisodiy jihatdan samarali
-          yoki samarasiz ekanligini ko'rsatadi.
-        </p>
-      </div>
-    </div>
-
-    <!-- Qanday ishlaydi -->
-    <div class="mb-6 rounded-xl border-2 border-blue-200 bg-white p-6">
-      <div class="mb-5 flex items-center gap-4">
-        <span
-          class="flex h-14 w-14 flex-none items-center justify-center rounded-full bg-blue-700 text-white"
-        >
-          <Icon name="lucide:target" class="h-7 w-7" />
-        </span>
-        <h2 class="text-lg font-bold leading-snug sm:text-xl">
-          Tizim loyihaning samaradorlik foizini hisoblaydi va belgilangan eng
-          kam foiz bilan <span class="text-blue-600">solishtiradi</span>.
-        </h2>
-      </div>
-
-      <div class="grid items-center gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
-        <div class="flex items-center gap-3 rounded-xl border border-blue-100 bg-blue-50 p-4">
-          <span class="text-3xl font-extrabold text-blue-600">1</span>
-          <p class="text-sm font-semibold">Samaradorlik foizi hisoblanadi</p>
-        </div>
-        <Icon name="lucide:arrow-right" class="hidden h-6 w-6 text-blue-400 lg:block" />
-        <div class="flex items-center gap-3 rounded-xl border border-blue-100 bg-blue-50 p-4">
-          <span class="text-3xl font-extrabold text-blue-600">2</span>
-          <p class="text-sm font-semibold">
-            Belgilangan eng kam foiz bilan solishtiriladi
-          </p>
-        </div>
-        <Icon name="lucide:arrow-right" class="hidden h-6 w-6 text-blue-400 lg:block" />
-        <div class="flex items-center gap-3 rounded-xl border border-blue-100 bg-blue-50 p-4">
-          <span class="text-3xl font-extrabold text-blue-600">3</span>
-          <p class="text-sm font-semibold">
-            Loyihani amalga oshirish mumkin yoki mumkin emasligi aniqlanadi
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4 ta info karta -->
-    <div class="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:trending-up" class="h-6 w-6 text-green-600" />
-          <h3 class="font-bold">Nimani ko'rsatadi?</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-slate-700">
-          Loyiha davlat uchun qanchalik foydali ekanligini baholaydi.
-        </p>
-      </div>
-
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:target" class="h-6 w-6 text-purple-600" />
-          <h3 class="font-bold">Taqqoslash foizi</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-slate-700">
-          Hisoblangan foiz shu ko'rsatkich bilan taqqoslanadi.
-        </p>
-      </div>
-
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:landmark" class="h-6 w-6 text-blue-600" />
-          <h3 class="font-bold">Qaysi loyihalar uchun?</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-slate-700">
-          Yo'l, maktab, shifoxona va boshqa davlat loyihalari.
-        </p>
-      </div>
-
-      <div class="rounded-xl border border-slate-200 bg-white p-5">
-        <div class="mb-3 flex items-center gap-2.5">
-          <Icon name="lucide:scale" class="h-6 w-6 text-orange-500" />
-          <h3 class="font-bold">Farqi nimada?</h3>
-        </div>
-        <p class="text-sm leading-relaxed text-slate-700">
-          Davlat uchun umumiy iqtisodiy samarani baholaydi.
-        </p>
-      </div>
-    </div>
+  
 
     <!-- Kalkulyator -->
     <div class="mb-6 rounded-xl border border-slate-200 bg-white p-6">
@@ -105,7 +8,7 @@
         <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
           <Icon name="lucide:calculator" class="h-5 w-5" />
         </span>
-        <h2 class="text-lg font-bold">EIRR kalkulyatori — Davlat loyihalari</h2>
+        <h2 class="text-[28px] font-bold">Loyiha o‘zini oqlashi uchun kerakli eng kam samaradorlik foizi</h2>
       </div>
       <p class="mb-5 text-sm text-slate-600">
         Ma'lumotlarni kiriting. Tizim samaradorlik foizini hisoblaydi va

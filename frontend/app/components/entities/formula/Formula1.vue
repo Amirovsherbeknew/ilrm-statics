@@ -21,7 +21,7 @@
         <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
           <Icon name="lucide:calculator" class="h-5 w-5" />
         </span>
-        <h2 class="text-lg font-bold">{{ current.title }}</h2>
+        <h2 class="text-[28px] font-bold">Loyiha iqtisodiy baholash kalkulyatori</h2>
       </div>
       <p class="mb-5 text-sm text-slate-500">{{ current.subtitle }}</p>
 
@@ -219,8 +219,8 @@ const calculators = [
     title: 'NPV kalkulyatori — Bank krediti',
     subtitle: "r avtomatik hisoblanadi: kredit stavkasi + loyiha xavfi",
     fields: [
-      { key: 'rate', label: 'Kredit stavkasi (%)', hint: 'Masalan: 18', default: 18 },
-      { key: 'risk', label: 'Loyiha xavfi (%)', hint: 'Masalan: 5', default: 5 },
+      { key: 'rate', label: 'Kredit stavkasi (%)', hint: '', default: 18 },
+      { key: 'risk', label: 'Loyiha xavfi (%)', hint: '', default: 5 },
       { key: 'investment', label: "Investitsiya I₀ (mln)", hint: "Boshlang'ich qo'yilma", default: 90 },
       { key: 'cashFlow', label: 'Pul oqimi CF (mln/yil)', hint: 'Yillik daromad minus xarajat', default: 30 },
       { key: 'years', label: 'Loyiha muddati (yil)', hint: 'Yillar soni', default: 3 }
@@ -236,8 +236,8 @@ const calculators = [
     title: "NPV kalkulyatori — O'z mablag'lari",
     subtitle: "r = depozit stavkasi + loyiha xavfi (boy berilgan foyda)",
     fields: [
-      { key: 'deposit', label: 'Depozit stavkasi (%)', hint: 'Masalan: 15', default: 15 },
-      { key: 'risk', label: 'Loyiha xavfi (%)', hint: 'Masalan: 5', default: 5 },
+      { key: 'deposit', label: 'Depozit stavkasi (%)', hint: '', default: 15 },
+      { key: 'risk', label: 'Loyiha xavfi (%)', hint: '', default: 5 },
       { key: 'investment', label: "Investitsiya I₀ (mln)", hint: "Boshlang'ich qo'yilma", default: 90 },
       { key: 'cashFlow', label: 'Pul oqimi CF (mln/yil)', hint: 'Yillik daromad minus xarajat', default: 30 },
       { key: 'years', label: 'Loyiha muddati (yil)', hint: 'Yillar soni', default: 3 }
@@ -251,13 +251,13 @@ const calculators = [
     key: 'government',
     shortTitle: 'Davlat loyihasi',
     title: 'NPV kalkulyatori — Davlat loyihasi',
-    subtitle: 'r = inflyatsiya + mamlakat xavfi (yoki World Bank tayyor stavkasi)',
+    subtitle: '',
     fields: [
-      { key: 'inflation', label: 'Yillik inflyatsiya (%)', hint: 'Masalan: 9', default: 9 },
+      { key: 'inflation', label: 'Yillik inflyatsiya (%)', hint: '', default: 9 },
       { key: 'countryRisk', label: 'Mamlakatdagi xavf darajasi (%)', hint: "Investitsiyaga ta'sir qilishi mumkin bo'lgan mamlakatdagi iqtisodiy va siyosiy xavf darajasi.", default: 3 },
-      { key: 'investment', label: "Loyiha boshida kiritiladigan mablag' (mln so'm)", hint: "Boshida kiritiladigan mablag'", default: 800 },
+      { key: 'investment', label: "Loyiha boshida kiritiladigan mablag' (mln so'm)", hint: "", default: 800 },
       { key: 'cashFlow', label: "Loyihadan kutilayotgan yillik iqtisodiy samara (mln so'm)", hint: "Barcha xarajatlar hisobga olingandan keyin kutilayotgan yillik iqtisodiy samara.", default: 150 },
-      { key: 'years', label: 'Loyiha necha yil davom etadi?', hint: 'Yillar soni', default: 10 }
+      { key: 'years', label: 'Loyiha necha yil davom etadi? (Yil)', hint: '', default: 10 }
     ],
     getR: (f) => f.inflation + f.countryRisk,
     rFormula: (f, r) => `r = ${f.inflation}% (inflyatsiya) + ${f.countryRisk}% (mamlakat xavfi) = ${r}%`,
