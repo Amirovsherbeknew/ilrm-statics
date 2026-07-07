@@ -479,7 +479,7 @@ async function handleSubmit() {
     }
 
     ElMessage.success("Loyiha muvaffaqiyatli saqlandi");
-    emit('update')
+    emit('update',data.value?.id)
     router.replace({
       query:{
         id:data.value?.id

@@ -22,7 +22,7 @@ onMounted(() => {
 })
 
 async function getProjectInfo () {
-  const {data,error} = await useFetchApi.get(`/api/projects/${projectId.value}`)
+  const {data,error} = await useFetchApi.get(`/api/projects/${projectId.value || route.query.id }`)
   if (!error.value) {
     projectInfo.value = data.value
   }
