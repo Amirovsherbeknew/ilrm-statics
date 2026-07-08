@@ -20,6 +20,15 @@
         />
       </el-form-item>
 
+      <el-form-item label="Bu bosqichda qancha mablag' ajratiladi (mln so'm)" prop="price">
+        <el-input
+          v-model="form.price"
+          type="number"
+          placeholder="Bu bosqichda qancha mablag' ajratiladi (mln so'm)"
+          size="large"
+        />
+      </el-form-item>
+
       <el-form-item label="Boshlanish sanasi" prop="startDate" class="!w-full">
         <el-date-picker
           v-model="form.startDate"
@@ -81,10 +90,12 @@ const form = reactive({
   name: "",
   startDate: "",
   endDate: "",
+  price:undefined
 });
 
 const rules = {
   name: [{ required: true, message: "Bosqich nomini kiriting", trigger: "blur" }],
+  price: [{ required: true, message: "Bu bosqichda qancha mablag'ni kiritish majburiy", trigger: "blur" }],
   startDate: [{ required: true, message: "Boshlanish sanasini tanlang", trigger: "change" }],
   endDate: [{ required: true, message: "Tugash sanasini tanlang", trigger: "change" }],
 };
@@ -96,6 +107,7 @@ watch(dialogVisible, (val) => {
     if (props.stageData) {
       form.id = props.stageData.id;
       form.name = props.stageData.name;
+      form.price = props.stageData.price;
       form.startDate = props.stageData.startDate;
       form.endDate = props.stageData.endDate;
     } else {
@@ -117,6 +129,7 @@ function isAfterEndDate(date) {
 function resetForm() {
   form.id = null;
   form.name = "";
+  form.price = undefined
   form.startDate = "";
   form.endDate = "";
   formRef.value?.clearValidate();
@@ -144,6 +157,7 @@ async function handleSave() {
       emit("save", {
         id: form.id ?? Date.now(),
         name: form.name,
+        price: form.price,
         startDate: form.startDate,
         endDate: form.endDate,
       });

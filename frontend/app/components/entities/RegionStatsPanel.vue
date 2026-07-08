@@ -60,7 +60,7 @@
           v-for="p in projects"
           :key="p.num"
           class="group relative py-5 pl-6 cursor-pointer transition-colors hover:bg-[#F3EFE4]/60"
-          @click="$router.push(`/projects/${p?.id}`)"
+          @click="$router.push(`/projects/${p?.num}`)"
         >
           <!-- timeline dot -->
           <span

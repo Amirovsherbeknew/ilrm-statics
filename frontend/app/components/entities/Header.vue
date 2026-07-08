@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-between gap-2 border-b-[2px] border-stone-200 h-[85px] flex gap-1 px-3 bg-white/30 backdrop-blur-none">
+    <div class="flex items-center justify-between gap-2 border-b-[2px] border-stone-200 h-[85px] flex gap-1 px-3 py-1 bg-white/30 backdrop-blur-none">
         <nuxt-link class="flex items-center justify-start gap-2 cursor-pointer" :to="getRole() === 'monitoring' ? '/':'/projects'">
             <img src="https://btr.iplmr.uz/_nuxt/greb2.C9oZdOx_.png" alt="greb" class="w-[60px] h-[60px]">
             <div class="flex items-center flex-col justify-start my-auto max-md:hidden">
@@ -8,7 +8,7 @@
             </div>
         </nuxt-link>
         <div class="flex items-center gap-3">
-            <el-segmented v-if="getRole() === 'monitoring'" v-model="value" :options="options" block class="w-[220px]" @change="router.push({name:$event})"/>
+            <el-segmented v-if="getRole() === 'monitoring'" v-model="value" :options="options" block class="w-[220px] shadow border border-stone-100" @change="router.push({name:$event})"/>
             <ActionButton type="exit" @click="handleLogout"/>
         </div>
     </div>

@@ -12,15 +12,181 @@
       "businessPlan": "/uploads/1783416344388-650986755-d7879e27-d5c5-4b66-a095-ee71ef0d31e4.pdf",
       "passportFile": "/uploads/1783416344624-778651567-d7879e27-d5c5-4b66-a095-ee71ef0d31e4.pdf",
       "createdAt": "2026-07-05T17:04:39.454Z",
-      "updatedAt": "2026-07-07T09:25:44.627Z",
-      "status": "DR",
+      "updatedAt": "2026-07-07T16:25:51.723Z",
+      "status": "IP",
       "id": 1,
       "regions": [
         11
       ],
       "districts": [
         157
-      ]
+      ],
+      "localJobsCount": 2,
+      "foreignJobsCount": 2,
+      "responsibleEmployee": "dasd",
+      "publicOpinionFile": "/uploads/1783440128424-783407014-file--9-.pdf",
+      "npv": 47.53,
+      "dpp": 4.29,
+      "bcr": 1.5,
+      "eirr": 18.31,
+      "resultDetails": {
+        "npv": {
+          "r": 12,
+          "rows": [
+            {
+              "year": 1,
+              "coef": 1.12,
+              "pv": 133.92857142857142
+            },
+            {
+              "year": 2,
+              "coef": 1.2544000000000002,
+              "pv": 119.57908163265304
+            },
+            {
+              "year": 3,
+              "coef": 1.4049280000000004,
+              "pv": 106.76703717201163
+            },
+            {
+              "year": 4,
+              "coef": 1.5735193600000006,
+              "pv": 95.32771176072467
+            },
+            {
+              "year": 5,
+              "coef": 1.7623416832000007,
+              "pv": 85.11402835778988
+            },
+            {
+              "year": 6,
+              "coef": 1.973822685184001,
+              "pv": 75.9946681765981
+            },
+            {
+              "year": 7,
+              "coef": 2.2106814074060814,
+              "pv": 67.852382300534
+            },
+            {
+              "year": 8,
+              "coef": 2.4759631762948113,
+              "pv": 60.582484196905355
+            },
+            {
+              "year": 9,
+              "coef": 2.773078757450189,
+              "pv": 54.091503747236914
+            },
+            {
+              "year": 10,
+              "coef": 3.105848208344212,
+              "pv": 48.29598548860439
+            }
+          ],
+          "sumPv": 847.5334542616295,
+          "npv": 47.53345426162946,
+          "investment": 800,
+          "formulaLine": "r = 9% (inflyatsiya) + 3% (mamlakat xavfi) = 12%",
+          "summary": "Loyiha xarajatlarni qoplaydi va davlatga qo'shimcha 47.53 mln so'm sof foyda keltiradi."
+        },
+        "dpp": {
+          "pp": 3,
+          "dpp": 4.291690312499999,
+          "dppFound": true,
+          "rows": [
+            {
+              "year": 1,
+              "pv": 26.086956521739133,
+              "cumulative": 26.086956521739133,
+              "crossed": false
+            },
+            {
+              "year": 2,
+              "pv": 22.684310018903595,
+              "cumulative": 48.77126654064273,
+              "crossed": false
+            },
+            {
+              "year": 3,
+              "pv": 19.725486972959647,
+              "cumulative": 68.49675351360237,
+              "crossed": false
+            },
+            {
+              "year": 4,
+              "pv": 17.152597367791,
+              "cumulative": 85.64935088139337,
+              "crossed": false
+            },
+            {
+              "year": 5,
+              "pv": 14.915302058948697,
+              "cumulative": 100.56465294034207,
+              "crossed": true
+            },
+            {
+              "year": 6,
+              "pv": 12.969827877346694,
+              "cumulative": 113.53448081768876,
+              "crossed": false
+            },
+            {
+              "year": 7,
+              "pv": 11.278111197692779,
+              "cumulative": 124.81259201538154,
+              "crossed": false
+            },
+            {
+              "year": 8,
+              "pv": 9.807053215385025,
+              "cumulative": 134.61964523076657,
+              "crossed": false
+            },
+            {
+              "year": 9,
+              "pv": 8.52787236120437,
+              "cumulative": 143.14751759197094,
+              "crossed": false
+            },
+            {
+              "year": 10,
+              "pv": 7.415541183655976,
+              "cumulative": 150.56305877562693,
+              "crossed": false
+            }
+          ],
+          "investment": 90,
+          "cashFlow": 30,
+          "maxYears": 10,
+          "rate": 15
+        },
+        "bcr": {
+          "bcr": 1.4999999999999998,
+          "pvBenefits": 698.7905441600259,
+          "pvCosts": 465.86036277335063,
+          "r": 17,
+          "status": "good",
+          "headline": "Loyihani amalga oshirish mumkin",
+          "recommendation": "Shuning uchun loyihani amalga oshirish tavsiya etiladi.",
+          "benefit": 150,
+          "cost": 100,
+          "rate": 12,
+          "risk": 5
+        },
+        "eirr": {
+          "initialCost": 800,
+          "annualBenefit": 180,
+          "years": 10,
+          "baseMinRate": 12,
+          "risk": 5,
+          "minRate": 17,
+          "eirr": 18.313673018364675,
+          "ok": true,
+          "verdictShort": "Hisoblangan foiz talab qilinadigan eng kam foizdan yuqori (18,31% ≥ 17%)",
+          "verdictLong": "Hisoblangan foiz talab qilinadigan eng kam foizdan yuqori (18,31% ≥ 17%)."
+        }
+      }
     },
     {
       "name": "asdsad",
@@ -95,6 +261,136 @@
       "createdAt": "2026-07-07T09:11:09.916Z",
       "updatedAt": "2026-07-07T09:11:09.916Z",
       "id": 4
+    },
+    {
+      "name": "test new",
+      "type": "Qishloq xo'jaligi",
+      "year": "2026",
+      "investmentType": "xususiy",
+      "organization": "asd",
+      "country": "O'zbekiston",
+      "guarantorBank": "Agrobank",
+      "insuranceCompany": "Uzbekinvest",
+      "localJobsCount": 21,
+      "foreignJobsCount": 1,
+      "responsibleEmployee": "Aliyev Anvar",
+      "businessPlan": "/uploads/1783502407743-593969279-file--9-.pdf",
+      "passportFile": "/uploads/1783502407744-543663162-file--9-.pdf",
+      "publicOpinionFile": "/uploads/1783502407745-867234564-file--9-.pdf",
+      "regions": [
+        14
+      ],
+      "districts": [
+        207,
+        205,
+        204
+      ],
+      "status": "IP",
+      "npv": -29.66,
+      "dpp": 4.29,
+      "bcr": null,
+      "eirr": null,
+      "createdAt": "2026-07-08T09:20:07.747Z",
+      "updatedAt": "2026-07-08T09:26:15.039Z",
+      "id": 5,
+      "resultDetails": {
+        "npv": {
+          "r": 23,
+          "rows": [
+            {
+              "year": 1,
+              "coef": 1.23,
+              "pv": 24.390243902439025
+            },
+            {
+              "year": 2,
+              "coef": 1.5129,
+              "pv": 19.8294665873488
+            },
+            {
+              "year": 3,
+              "coef": 1.8608669999999998,
+              "pv": 16.121517550690083
+            }
+          ],
+          "sumPv": 60.341228040477915,
+          "npv": -29.658771959522085,
+          "investment": 90,
+          "formulaLine": "r = 18% (kredit) + 5% (xavf) = 23%",
+          "summary": "Kredit stavkasi 18% va xavf 5% bo'lganda loyiha zarar keltiradi: 29.66 mln so'm. Kredit olish foydali emas."
+        },
+        "dpp": {
+          "pp": 3,
+          "dpp": 4.291690312499999,
+          "dppFound": true,
+          "rows": [
+            {
+              "year": 1,
+              "pv": 26.086956521739133,
+              "cumulative": 26.086956521739133,
+              "crossed": false
+            },
+            {
+              "year": 2,
+              "pv": 22.684310018903595,
+              "cumulative": 48.77126654064273,
+              "crossed": false
+            },
+            {
+              "year": 3,
+              "pv": 19.725486972959647,
+              "cumulative": 68.49675351360237,
+              "crossed": false
+            },
+            {
+              "year": 4,
+              "pv": 17.152597367791,
+              "cumulative": 85.64935088139337,
+              "crossed": false
+            },
+            {
+              "year": 5,
+              "pv": 14.915302058948697,
+              "cumulative": 100.56465294034207,
+              "crossed": true
+            },
+            {
+              "year": 6,
+              "pv": 12.969827877346694,
+              "cumulative": 113.53448081768876,
+              "crossed": false
+            },
+            {
+              "year": 7,
+              "pv": 11.278111197692779,
+              "cumulative": 124.81259201538154,
+              "crossed": false
+            },
+            {
+              "year": 8,
+              "pv": 9.807053215385025,
+              "cumulative": 134.61964523076657,
+              "crossed": false
+            },
+            {
+              "year": 9,
+              "pv": 8.52787236120437,
+              "cumulative": 143.14751759197094,
+              "crossed": false
+            },
+            {
+              "year": 10,
+              "pv": 7.415541183655976,
+              "cumulative": 150.56305877562693,
+              "crossed": false
+            }
+          ],
+          "investment": 90,
+          "cashFlow": 30,
+          "maxYears": 10,
+          "rate": 15
+        }
+      }
     }
   ],
   "stages": [
@@ -196,6 +492,46 @@
       "createdAt": "2026-07-07T10:08:56.432Z",
       "updatedAt": "2026-07-07T10:08:56.432Z",
       "id": 11
+    },
+    {
+      "name": "Loyihalashtirish",
+      "price": 1000,
+      "startDate": "2026-09-01",
+      "endDate": "2026-09-30",
+      "projectId": 5,
+      "createdAt": "2026-07-08T09:21:18.785Z",
+      "updatedAt": "2026-07-08T09:21:18.785Z",
+      "id": 12
+    },
+    {
+      "name": "Qurilish",
+      "price": 20000,
+      "startDate": "2026-10-07",
+      "endDate": "2026-10-28",
+      "projectId": 5,
+      "createdAt": "2026-07-08T09:21:37.145Z",
+      "updatedAt": "2026-07-08T09:21:37.145Z",
+      "id": 13
+    },
+    {
+      "name": "Topshirish",
+      "price": 5000,
+      "startDate": "2026-12-01",
+      "endDate": "2026-12-23",
+      "projectId": 5,
+      "createdAt": "2026-07-08T09:21:56.212Z",
+      "updatedAt": "2026-07-08T09:21:56.212Z",
+      "id": 14
+    },
+    {
+      "name": "Integratiion",
+      "price": 6000,
+      "startDate": "2027-01-01",
+      "endDate": "2027-02-03",
+      "projectId": 5,
+      "createdAt": "2026-07-08T09:28:27.518Z",
+      "updatedAt": "2026-07-08T09:28:27.518Z",
+      "id": 15
     }
   ]
 }

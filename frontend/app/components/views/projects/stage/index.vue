@@ -20,6 +20,12 @@
 
         <el-table-column prop="name" label="Bosqich nomi" min-width="180" />
 
+        <el-table-column label="Narx (mln so'm)" width="160">
+          <template #default="{ row }">
+            {{ row.price !== null && row.price !== undefined ? formatPrice(row.price) : '—' }}
+          </template>
+        </el-table-column>
+
         <el-table-column label="Boshlanish sanasi" width="160">
           <template #default="{ row }">
             {{ row.startDate }}
@@ -130,6 +136,7 @@ async function handleSave(stageData) {
 
   const payload = {
     name: stageData.name,
+    price: stageData.price,
     startDate: stageData.startDate,
     endDate: stageData.endDate,
     projectId: props.projectInfo?.id,
@@ -153,6 +160,10 @@ async function handleSave(stageData) {
     stages.value.push(data.value);
     ElMessage.success("Bosqich muvaffaqiyatli qo'shildi");
   }
+}
+
+function formatPrice(n) {
+  return Number(n).toLocaleString("ru-RU", { maximumFractionDigits: 2 });
 }
 
 async function removeStage(id) {

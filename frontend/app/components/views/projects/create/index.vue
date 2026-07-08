@@ -15,8 +15,7 @@
         label-position="top"
         class="grid grid-cols-1 md:grid-cols-2 gap-x-3"
       >
-        <div class="grid grid-cols-3 gap-2 col-span-2">
-          <!-- 1) Loyiha nomi -->
+        <!-- 1) Loyiha nomi -->
           <el-form-item label="Loyiha nomi" prop="name">
             <el-input
               v-model="form.name"
@@ -39,73 +38,11 @@
                 :value="item"
               />
             </el-select>
-          </el-form-item>
-            <div class="grid grid-cols-2 gap-2">
-              <!-- 3) Loyiha yili (default - tizimdagi joriy yil) -->
-              <el-form-item label="Loyiha yili" prop="year">
-                <el-date-picker
-                  v-model="form.year"
-                  type="year"
-                  placeholder="Yilni tanlang"
-                  size="large"
-                  class="!w-full"
-                  value-format="YYYY"
-                />
-              </el-form-item>
-
-              <!-- 5) Investitsiya kim tomonidan kiritiladi -->
-              <el-form-item label="Investitsiya kim tomonidan kiritiladi" prop="investmentType" clas="w-full grid">
-                <el-radio-group v-model="form.investmentType" size="large" class="w-full flex-nowrap !grid grid-cols-2">
-                  <el-radio-button label="xususiy">Xususiy</el-radio-button>
-                  <el-radio-button label="davlat">Davlat</el-radio-button>
-                </el-radio-group>
-              </el-form-item>
-            </div>
-        </div>        
+          </el-form-item>       
 
         <!-- 6) Formulalar - alohida ishlanadi, bu yerda yo'q -->
 
-        <!-- 7) Biznes plan (fayl) -->
-        <el-form-item label="Biznes plan (fayl)" prop="businessPlan">
-          <el-upload
-            class="w-full"
-            drag
-            :auto-upload="false"
-            :limit="1"
-            :disabled="fieldsDisabled"
-            :on-change="(file) => (form.businessPlan = file)"
-            :on-remove="() => (form.businessPlan = null)"
-          >
-            <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-            <div class="el-upload__text">
-              Faylni shu yerga tashlang yoki <em>yuklash uchun bosing</em>
-            </div>
-            <template #tip>
-              <div class="el-upload__tip">PDF, DOC, DOCX (max 10MB)</div>
-            </template>
-          </el-upload>
-        </el-form-item>
-
-        <!-- 8) Loyiha passporti (fayl) -->
-        <el-form-item label="Loyiha passporti (fayl)" prop="passportFile">
-          <el-upload
-            class="w-full"
-            drag
-            :auto-upload="false"
-            :limit="1"
-            :disabled="fieldsDisabled"
-            :on-change="(file) => (form.passportFile = file)"
-            :on-remove="() => (form.passportFile = null)"
-          >
-            <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-            <div class="el-upload__text">
-              Faylni shu yerga tashlang yoki <em>yuklash uchun bosing</em>
-            </div>
-            <template #tip>
-              <div class="el-upload__tip">PDF, DOC, DOCX (max 10MB)</div>
-            </template>
-          </el-upload>
-        </el-form-item>
+        
 
         <!-- 9) Qaysi tashkilot -->
         <el-form-item label="Qaysi tashkilot" prop="organization">
@@ -208,6 +145,127 @@
             />
           </el-select>
         </el-form-item>
+
+        <!-- 15-16) Qancha ish o'rni yaratiladi -->
+        <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-3">
+          <el-form-item label="Qancha ish o'rin yaratiladi (Mahaliy)" prop="localJobsCount">
+            <el-input-number
+              v-model="form.localJobsCount"
+              :min="0"
+              placeholder="Mahaliy ish o'rinlari sonini kiriting"
+              size="large"
+              class="!w-full"
+              controls-position="right"
+            />
+          </el-form-item>
+
+          <el-form-item label="Qancha ish o'rin yaratiladi (Xorijiy)" prop="foreignJobsCount">
+            <el-input-number
+              v-model="form.foreignJobsCount"
+              :min="0"
+              placeholder="Xorijiy ish o'rinlari sonini kiriting"
+              size="large"
+              class="!w-full"
+              controls-position="right"
+            />
+          </el-form-item>
+        </div>
+
+        <!-- 17) Mas'ul xodim -->
+        <el-form-item label="Mas'ul xodim" prop="responsibleEmployee">
+          <el-input
+            v-model="form.responsibleEmployee"
+            placeholder="Mas'ul xodimni kiriting"
+            size="large"
+          />
+        </el-form-item>
+
+        <div class="grid grid-cols-2 gap-2">
+              <!-- 3) Loyiha yili (default - tizimdagi joriy yil) -->
+              <el-form-item label="Loyiha yili" prop="year">
+                <el-date-picker
+                  v-model="form.year"
+                  type="year"
+                  placeholder="Yilni tanlang"
+                  size="large"
+                  class="!w-full"
+                  value-format="YYYY"
+                />
+              </el-form-item>
+
+              <!-- 5) Investitsiya kim tomonidan kiritiladi -->
+              <el-form-item label="Investitsiya kim tomonidan kiritiladi" prop="investmentType" clas="w-full grid">
+                <el-radio-group v-model="form.investmentType" size="large" class="w-full flex-nowrap !grid grid-cols-2">
+                  <el-radio-button label="xususiy">Xususiy</el-radio-button>
+                  <el-radio-button label="davlat">Davlat</el-radio-button>
+                </el-radio-group>
+              </el-form-item>
+            </div>
+
+        <div class="col-span-2 grid grid-cols-3 gap-2">
+          <!-- 7) Biznes plan (fayl) -->
+          <el-form-item label="Biznes plan (fayl)" prop="businessPlan">
+            <el-upload
+              class="w-full"
+              drag
+              :auto-upload="false"
+              :limit="1"
+              :disabled="fieldsDisabled"
+              :on-change="(file) => (form.businessPlan = file)"
+              :on-remove="() => (form.businessPlan = null)"
+            >
+              <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+              <div class="el-upload__text">
+                Faylni shu yerga tashlang yoki <em>yuklash uchun bosing</em>
+              </div>
+              <template #tip>
+                <div class="el-upload__tip">PDF, DOC, DOCX (max 10MB)</div>
+              </template>
+            </el-upload>
+          </el-form-item>
+
+          <!-- 8) Loyiha passporti (fayl) -->
+          <el-form-item label="Loyiha passporti (fayl)" prop="passportFile">
+            <el-upload
+              class="w-full"
+              drag
+              :auto-upload="false"
+              :limit="1"
+              :disabled="fieldsDisabled"
+              :on-change="(file) => (form.passportFile = file)"
+              :on-remove="() => (form.passportFile = null)"
+            >
+              <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+              <div class="el-upload__text">
+                Faylni shu yerga tashlang yoki <em>yuklash uchun bosing</em>
+              </div>
+              <template #tip>
+                <div class="el-upload__tip">PDF, DOC, DOCX (max 10MB)</div>
+              </template>
+            </el-upload>
+          </el-form-item>
+
+          <!-- 18) Jamoatchilik fikri (fayl) -->
+          <el-form-item label="Jamoatchilik fikri (fayl)" prop="publicOpinionFile">
+            <el-upload
+              class="w-full"
+              drag
+              :auto-upload="false"
+              :limit="1"
+              :disabled="fieldsDisabled"
+              :on-change="(file) => (form.publicOpinionFile = file)"
+              :on-remove="() => (form.publicOpinionFile = null)"
+            >
+              <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+              <div class="el-upload__text">
+                Faylni shu yerga tashlang yoki <em>yuklash uchun bosing</em>
+              </div>
+              <template #tip>
+                <div class="el-upload__tip">PDF, DOC, DOCX (max 10MB)</div>
+              </template>
+            </el-upload>
+          </el-form-item>
+        </div>
 
         <!-- Tugmalar -->
         <div class="md:col-span-2 flex gap-3 mt-4">
@@ -312,6 +370,10 @@ const form = reactive({
   insuranceCompany: "",
   regions: [],
   districts: [],
+  localJobsCount: null,
+  foreignJobsCount: null,
+  responsibleEmployee: "",
+  publicOpinionFile: null,
 });
 
 // ====== Validatsiya qoidalari ======
@@ -321,11 +383,17 @@ const rules = {
   year: [{ required: true, message: "Loyiha yilini tanlang", trigger: "change" }],
   investmentType: [{ required: true, message: "Investitsiya turini tanlang", trigger: "change" }],
   organization: [{ required: true, message: "Tashkilotni kiriting", trigger: "blur" }],
+  businessPlan: [{ required: true, message: "Biznes rejani yuklang", trigger: "change" }],
+  passportFile: [{ required: true, message: "Loyiha passportini yuklang", trigger: "change" }],
+  publicOpinionFile: [{ required: true, message: "Jamoatchilik fikrini yuklang", trigger: "change" }],
   country: [{ required: true, message: "Davlatni tanlang", trigger: "change" }],
   guarantorBank: [{ required: true, message: "Kafil bankni tanlang", trigger: "change" }],
   insuranceCompany: [{ required: true, message: "Sug'urta kompaniyasini tanlang", trigger: "change" }],
   regions: [{ required: true, type: "array", min: 1, message: "Kamida bitta hududni tanlang", trigger: "change" }],
   districts: [{ required: true, type: "array", min: 1, message: "Kamida bitta tumanni tanlang", trigger: "change" }],
+  localJobsCount: [{ required: true, type: "number", message: "Mahaliy ish o'rinlari sonini kiriting", trigger: "change" }],
+  foreignJobsCount: [{ required: true, type: "number", message: "Xorijiy ish o'rinlari sonini kiriting", trigger: "change" }],
+  responsibleEmployee: [{ required: true, message: "Mas'ul xodimni kiriting", trigger: "blur" }],
 };
 
 // Hudud o'zgarganda, endi tegishli bo'lmagan tumanlarni tanlovdan olib tashlaymiz.
@@ -357,12 +425,15 @@ const EDITABLE_KEYS = [
   "insuranceCompany",
   "regions",
   "districts",
+  "localJobsCount",
+  "foreignJobsCount",
+  "responsibleEmployee",
 ];
 
 const originalForm = reactive({});
 
 const isDirty = computed(() => {
-  const fileChanged = !!(form.businessPlan?.raw || form.passportFile?.raw);
+  const fileChanged = !!(form.businessPlan?.raw || form.passportFile?.raw || form.publicOpinionFile?.raw);
   const fieldsChanged = EDITABLE_KEYS.some(
     (key) => String(form[key] ?? "") !== String(originalForm[key] ?? "")
   );
@@ -385,6 +456,10 @@ watch(
       form.insuranceCompany = val?.insuranceCompany;
       form.regions = val?.regions || [];
       form.districts = val?.districts || [];
+      form.localJobsCount = val?.localJobsCount ?? null;
+      form.foreignJobsCount = val?.foreignJobsCount ?? null;
+      form.responsibleEmployee = val?.responsibleEmployee || "";
+      form.publicOpinionFile = val?.publicOpinionFile;
 
       EDITABLE_KEYS.forEach((key) => {
         originalForm[key] = Array.isArray(form[key]) ? [...form[key]] : form[key];
@@ -429,10 +504,14 @@ async function handleSubmit() {
       payload.append("country", form.country);
       payload.append("regions", JSON.stringify(form.regions));
       payload.append("districts", JSON.stringify(form.districts));
+      payload.append("localJobsCount", form.localJobsCount);
+      payload.append("foreignJobsCount", form.foreignJobsCount);
+      payload.append("responsibleEmployee", form.responsibleEmployee);
       if (form.guarantorBank) payload.append("guarantorBank", form.guarantorBank);
       if (form.insuranceCompany) payload.append("insuranceCompany", form.insuranceCompany);
       if (form.businessPlan?.raw) payload.append("businessPlan", form.businessPlan.raw);
       if (form.passportFile?.raw) payload.append("passportFile", form.passportFile.raw);
+      if (form.publicOpinionFile?.raw) payload.append("publicOpinionFile", form.publicOpinionFile.raw);
 
       const { error } = await useFetchApi.patch(`/api/projects/${props.projectInfo.id}`, payload);
 
@@ -464,10 +543,14 @@ async function handleSubmit() {
     payload.append("country", form.country);
     payload.append("regions", JSON.stringify(form.regions));
     payload.append("districts", JSON.stringify(form.districts));
+    payload.append("localJobsCount", form.localJobsCount);
+    payload.append("foreignJobsCount", form.foreignJobsCount);
+    payload.append("responsibleEmployee", form.responsibleEmployee);
     if (form.guarantorBank) payload.append("guarantorBank", form.guarantorBank);
     if (form.insuranceCompany) payload.append("insuranceCompany", form.insuranceCompany);
     payload.append("businessPlan", form.businessPlan.raw);
     payload.append("passportFile", form.passportFile.raw);
+    if (form.publicOpinionFile?.raw) payload.append("publicOpinionFile", form.publicOpinionFile.raw);
 
     const { data, error } = await useFetchApi.post("/api/projects", payload);
 
@@ -494,6 +577,7 @@ function handleReset() {
   form.year = currentYear;
   form.businessPlan = null;
   form.passportFile = null;
+  form.publicOpinionFile = null;
   router.push('/projects')
 }
 </script>

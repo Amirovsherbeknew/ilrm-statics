@@ -10,7 +10,7 @@
 </template>
 <script setup>
 const route = useRoute()
-const active = ref(3)
+const active = ref(1)
 const projectInfo = ref()
 
 const projectId = computed(() => route.query.id || null)

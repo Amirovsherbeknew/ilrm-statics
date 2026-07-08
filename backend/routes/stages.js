@@ -31,6 +31,7 @@ router.post('/', auth, allowRoles(['hokimiyat']), async (req, res, next) => {
     const now = new Date().toISOString();
     const stage = {
       name: req.body.name,
+      price: req.body.price !== undefined ? Number(req.body.price) : null,
       startDate: req.body.startDate || '',
       endDate: req.body.endDate || '',
       projectId: req.body.projectId,
@@ -59,6 +60,10 @@ router.patch('/:id', auth, allowRoles(['hokimiyat']), async (req, res, next) => 
         updates[field] = req.body[field];
       }
     });
+
+    if (req.body.price !== undefined) {
+      updates.price = Number(req.body.price);
+    }
 
     const updatedStage = await updateRecord(req, 'stages', req.params.id, {
       ...updates,

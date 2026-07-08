@@ -5,6 +5,7 @@ const { auth } = require('../middleware/auth');
 const allowRoles = require('../middleware/role');
 const {
   findProject,
+  findProjectIdInStages,
   insertRecord,
   updateRecord,
   deleteUploadedFile,
@@ -28,7 +29,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 const projectFiles = upload.fields([
   { name: 'businessPlan', maxCount: 1 },
-  { name: 'passportFile', maxCount: 1 }
+  { name: 'passportFile', maxCount: 1 },
+  { name: 'publicOpinionFile', maxCount: 1 }
 ]);
 
 const editableFields = [
@@ -40,11 +42,15 @@ const editableFields = [
   'country',
   'guarantorBank',
   'insuranceCompany',
+  'localJobsCount',
+  'foreignJobsCount',
+  'responsibleEmployee',
   'status',
   'npv',
   'dpp',
   'bcr',
-  'eirr'
+  'eirr',
+  'resultDetails'
 ];
 
 function getUploadedFile(req, field) {
@@ -81,10 +87,14 @@ router.get('/:id', auth, allowRoles(['hokimiyat', 'monitoring']), async (req, re
     const project = await findProject(req, req.params.id);
 
     if (!project) {
-      return res.status(404).json({ message: 'Project not found' });
+      return res.status(404).json({ message: 'Loyiha topilmadi' });
     }
+    const stages = await findProjectIdInStages(req, req.params.id);
 
-    return res.json(project);
+    return res.json({
+      ...project,
+      stages:stages || []
+    });
   } catch (error) {
     return next(error);
   }
@@ -94,6 +104,7 @@ router.post('/', auth, allowRoles(['hokimiyat']), projectFiles, async (req, res,
   try {
     const businessPlanFile = getUploadedFile(req, 'businessPlan');
     const passportFile = getUploadedFile(req, 'passportFile');
+    const publicOpinionFile = getUploadedFile(req, 'publicOpinionFile');
     const missing = requireFields(
       {
         ...req.body,
@@ -108,7 +119,10 @@ router.post('/', auth, allowRoles(['hokimiyat']), projectFiles, async (req, res,
         'organization',
         'country',
         'businessPlan',
-        'passportFile'
+        'passportFile',
+        'localJobsCount',
+        'foreignJobsCount',
+        'responsibleEmployee'
       ]
     );
 
@@ -127,8 +141,12 @@ router.post('/', auth, allowRoles(['hokimiyat']), projectFiles, async (req, res,
       country: req.body.country,
       guarantorBank: req.body.guarantorBank || '',
       insuranceCompany: req.body.insuranceCompany || '',
+      localJobsCount: Number(req.body.localJobsCount),
+      foreignJobsCount: Number(req.body.foreignJobsCount),
+      responsibleEmployee: req.body.responsibleEmployee,
       businessPlan: filePathFromUpload(businessPlanFile),
       passportFile: filePathFromUpload(passportFile),
+      publicOpinionFile: filePathFromUpload(publicOpinionFile),
       regions: parseIdArray(req.body.regions),
       districts: parseIdArray(req.body.districts),
       status: 'DR',
@@ -159,6 +177,7 @@ router.patch('/:id', auth, allowRoles(['hokimiyat']), projectFiles, async (req, 
 
     const businessPlanFile = getUploadedFile(req, 'businessPlan');
     const passportFile = getUploadedFile(req, 'passportFile');
+    const publicOpinionFile = getUploadedFile(req, 'publicOpinionFile');
     const updates = {};
 
     editableFields.forEach((field) => {
@@ -183,6 +202,18 @@ router.patch('/:id', auth, allowRoles(['hokimiyat']), projectFiles, async (req, 
       updates.passportFile = filePathFromUpload(passportFile);
     }
 
+    if (publicOpinionFile) {
+      updates.publicOpinionFile = filePathFromUpload(publicOpinionFile);
+    }
+
+    if (updates.localJobsCount !== undefined) {
+      updates.localJobsCount = Number(updates.localJobsCount);
+    }
+
+    if (updates.foreignJobsCount !== undefined) {
+      updates.foreignJobsCount = Number(updates.foreignJobsCount);
+    }
+
     const updatedProject = await updateRecord(req, 'projects', req.params.id, {
       ...updates,
       updatedAt: new Date().toISOString()
@@ -194,6 +225,10 @@ router.patch('/:id', auth, allowRoles(['hokimiyat']), projectFiles, async (req, 
 
     if (passportFile) {
       await deleteUploadedFile(existingProject.passportFile);
+    }
+
+    if (publicOpinionFile) {
+      await deleteUploadedFile(existingProject.publicOpinionFile);
     }
 
     return res.json(updatedProject);

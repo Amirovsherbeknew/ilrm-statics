@@ -2,14 +2,14 @@
     <div class="flex flex-col gap-4 px-3" v-loading="loading">
         <div class="grid grid-cols-2 gap-4">
             <template v-if="projectInfo?.investmentType === 'davlat'">
-                <Formula1 :list="['government']" @calculated="(v) => onCalculated('npv', v)"/>
-                <Formula3 @calculated="(v) => onCalculated('dpp', v)"/>
-                <Formula8 @calculated="(v) => onCalculated('bcr', v)"/>
-                <Formula10 @calculated="(v) => onCalculated('eirr', v)"/>
+                <Formula1 :list="['government']" @calculated="(v, d) => onCalculated('npv', v, d)"/>
+                <Formula3 @calculated="(v, d) => onCalculated('dpp', v, d)"/>
+                <Formula8 @calculated="(v, d) => onCalculated('bcr', v, d)"/>
+                <Formula10 @calculated="(v, d) => onCalculated('eirr', v, d)"/>
             </template>
             <template v-if="projectInfo?.investmentType === 'xususiy'">
-                <Formula1 :list="['credit','ownFunds','wacc']" @calculated="(v) => onCalculated('npv', v)"/>
-                <Formula3 @calculated="(v) => onCalculated('dpp', v)"/>
+                <Formula1 :list="['credit','ownFunds','wacc']" @calculated="(v, d) => onCalculated('npv', v, d)"/>
+                <Formula3 @calculated="(v, d) => onCalculated('dpp', v, d)"/>
             </template>
         </div>
 
@@ -43,9 +43,11 @@ const finishing = ref(false);
 const projectInfoInvestmentTypes = ref(null);
 
 const calculatedValues = reactive({ npv: null, dpp: null, bcr: null, eirr: null });
+const calculatedDetails = reactive({ npv: null, dpp: null, bcr: null, eirr: null });
 
-function onCalculated(key, value) {
+function onCalculated(key, value, detail) {
   calculatedValues[key] = value;
+  calculatedDetails[key] = detail ?? null;
 }
 
 const requiredKeys = computed(() =>
@@ -74,9 +76,10 @@ async function handleFinish() {
 
   finishing.value = true;
 
-  const payload = { status: "IP" };
+  const payload = { status: "IP", resultDetails: {} };
   requiredKeys.value.forEach((key) => {
     payload[key] = calculatedValues[key];
+    payload.resultDetails[key] = calculatedDetails[key];
   });
 
   const { error } = await useFetchApi.patch(`/api/projects/${props.projectInfo?.id}`, payload);

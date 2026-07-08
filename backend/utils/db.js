@@ -25,6 +25,10 @@ async function findStage(req, id) {
   return collection(req, 'stages').getById(id).value();
 }
 
+async function findProjectIdInStages(req, projectId) {
+  return collection(req, 'stages').filter(stage => stage.projectId === Number(projectId)).value();
+}
+
 async function insertRecord(req, name, data) {
   return collection(req, name).insert(data).write();
 }
@@ -68,6 +72,7 @@ module.exports = {
   readDb,
   writeDb,
   findProject,
+  findProjectIdInStages,
   findStage,
   insertRecord,
   updateRecord,
