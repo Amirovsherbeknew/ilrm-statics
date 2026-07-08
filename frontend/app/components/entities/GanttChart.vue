@@ -139,7 +139,7 @@
 
             <!-- Bosqich qatorlari -->
             <tr
-              v-for="(stage, index) in validStages"
+              v-for="(stage, index) in displayedStages"
               :key="stage.id"
               class="transition-colors hover:bg-slate-50"
               :class="index % 2 === 1 ? 'bg-slate-50/50' : 'bg-white'"
@@ -310,6 +310,17 @@ const planTitle = computed(() =>
     : `${activeTab.value} yilda o'zlashtirish rejasi`
 );
 
+/* ---------- Tanlangan yil bo'yicha filtrlangan bosqichlar ---------- */
+const displayedStages = computed(() => {
+  if (!activeTab.value || activeTab.value === "Umumiy") return validStages.value;
+  const year = Number(activeTab.value);
+  return validStages.value.filter((stage) => {
+    const y1 = toDate(stage.startDate).getFullYear();
+    const y2 = toDate(stage.endDate).getFullYear();
+    return year >= y1 && year <= y2;
+  });
+});
+
 /* ---------- Katak faolligi ---------- */
 // Bosqich shu oy bilan kesishsa true
 function isStageActive(stage, col) {
@@ -356,7 +367,7 @@ function downloadCsv() {
     ...columns.value.map((c) => (isAnyStageActive(c) ? "✓" : "")),
   ];
 
-  const stageRows = validStages.value.map((stage) => [
+  const stageRows = displayedStages.value.map((stage) => [
     stage.name,
     stage.price !== null && stage.price !== undefined ? formatPrice(stage.price) : "",
     durationDays(stage),
