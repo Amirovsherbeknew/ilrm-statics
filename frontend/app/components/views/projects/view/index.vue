@@ -12,13 +12,29 @@
 
       <template v-if="project">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-gray-100 pb-4">
-          <TableStatus :type="project.status" />
-          <el-segmented
-            v-model="activeTab"
-            :options="tabOptions"
-            size="large"
-            class="self-start sm:self-auto"
-          />
+          <div class="flex flex-col gap-1.5">
+            <TableStatus :type="project.status" />
+            <p v-if="project.status === 'RD' && project.reason" class="text-xs text-rose-500">
+              Sabab: {{ project.reason }}
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <template v-if="isMonitoring && project.status === 'IR'">
+              <el-button type="success" :loading="statusUpdating" @click="approveProject">
+                Tasdiqlash
+              </el-button>
+              <el-button type="danger" plain :loading="statusUpdating" @click="rejectProject">
+                Rad etish
+              </el-button>
+            </template>
+            <el-segmented
+              v-model="activeTab"
+              :options="tabOptions"
+              size="large"
+              class="self-start sm:self-auto"
+            />
+          </div>
         </div>
 
         <transition name="tab-fade" mode="out-in">
@@ -86,12 +102,25 @@
 
           </div>
 
-          <div v-else key="schedule" class="flex flex-col gap-4">
+          <div v-else-if="activeTab === 'schedule'" key="schedule" class="flex flex-col gap-4">
             <h3 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
               <Icon name="lucide:gantt-chart" class="h-4 w-4" />
               Bosqichlar jadvali
             </h3>
-            <GanttChart :stages="stages" />
+            <GanttChart :stages="stages" :mechanisms="mechanisms" />
+          </div>
+
+          <div v-else key="mechanisms" class="flex flex-col gap-4">
+            <h3 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
+              <Icon name="lucide:list-checks" class="h-4 w-4" />
+              Mexanizmlar
+            </h3>
+            <StageMechanismTable
+              :stages="stages"
+              :project-id="project?.id"
+              :manage-stages="false"
+              :project-status="project?.status"
+            />
           </div>
         </transition>
       </template>
@@ -111,19 +140,26 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
+import { ElMessage, ElMessageBox } from "element-plus";
 
 const route = useRoute();
 const router = useRouter();
 const apiBase = useRuntimeConfig().public?.apiBase;
 
+const { getRole } = useToken();
+const isMonitoring = computed(() => getRole() === "monitoring");
+
 const loading = ref(false);
+const statusUpdating = ref(false);
 const project = ref(null);
 const stages = ref([]);
+const mechanisms = ref([]);
 const activeTab = ref("passport");
 
 const tabOptions = [
   { label: "Loyiha passporti", value: "passport" },
   { label: "Bosqichlar jadvali", value: "schedule" },
+  { label: "Mexanizmlar", value: "mechanisms" },
 ];
 
 async function fetchData() {
@@ -134,12 +170,55 @@ async function fetchData() {
   if (!error.value) {
     project.value = projectsData.value || null;
     stages.value = projectsData.value?.stages || [];
+    await fetchMechanisms();
   }
 
   loading.value = false;
 }
 
+async function fetchMechanisms() {
+  const { data } = await useFetchApi.get("/api/mechanisms");
+  const stageIds = stages.value.map((s) => String(s.id));
+  mechanisms.value = (data.value || []).filter((m) => stageIds.includes(String(m.stageId)));
+}
+
 onMounted(fetchData);
+
+async function updateProjectStatus(status, reason) {
+  statusUpdating.value = true;
+  const { data, error } = await useFetchApi.patch(`/api/projects/${project.value.id}/status`, { status, reason });
+  statusUpdating.value = false;
+
+  if (error.value) {
+    ElMessage.error(error.value?.data?.message || "Loyiha holatini yangilashda xatolik yuz berdi");
+    return;
+  }
+
+  project.value = { ...project.value, ...data.value };
+  ElMessage.success("Loyiha holati yangilandi");
+}
+
+function approveProject() {
+  updateProjectStatus("IP");
+}
+
+async function rejectProject() {
+  try {
+    const { value: reason } = await ElMessageBox.prompt(
+      "Rad etish sababini kiriting",
+      "Loyihani rad etish",
+      {
+        confirmButtonText: "Rad etish",
+        cancelButtonText: "Bekor qilish",
+        inputPlaceholder: "Sabab...",
+        inputValidator: (val) => !!val?.trim() || "Sababni kiritish majburiy",
+      }
+    );
+    await updateProjectStatus("RD", reason);
+  } catch {
+    // foydalanuvchi bekor qildi
+  }
+}
 
 function format(n) {
   return Number(n).toLocaleString("ru-RU", { maximumFractionDigits: 2 });

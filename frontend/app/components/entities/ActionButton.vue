@@ -33,6 +33,7 @@ interface TProps {
     | 'removed'
     | 'file-download'
     | 'reload'
+    | 'add-circle'
   disabled?: boolean
   tooltipTitle?: string
 }
@@ -52,6 +53,7 @@ const tooltip_titles = {
   reload: 'Yangilash',
   removed: 'Bekor qilish',
   'file-download': 'Yuklab olish',
+  'add-circle': "Qo'shish",
 }
 </script>
 
@@ -112,6 +114,14 @@ const tooltip_titles = {
   background: theme('colors.teal.500');
 }
 
+.add-circle {
+  background: var(--color-emerald-50);
+  color: var(--color-emerald-600);
+}
+.add-circle:hover {
+  background: theme('colors.emerald.500');
+}
+
 .search:hover,
 .show:hover,
 .delete:hover,
@@ -122,7 +132,8 @@ const tooltip_titles = {
 .save:hover,
 .edit:hover,
 .file-download:hover,
-.reload:hover {
+.reload:hover,
+.add-circle:hover {
   color: #fff;
 }
 </style>

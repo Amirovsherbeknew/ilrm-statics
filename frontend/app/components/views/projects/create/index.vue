@@ -411,7 +411,7 @@ watch(
 // o'zgartirish mumkin. Boshqa har qanday statusda loyiha allaqachon
 // keyingi bosqichlarga o'tgan hisoblanadi va bu forma faqat o'qish uchun bo'ladi.
 const isEditing = computed(() => !!props.projectInfo);
-const isDraft = computed(() => props.projectInfo?.status === "DR");
+const isDraft = computed(() => ['DR','RD'].includes(props.projectInfo?.status));
 const fieldsDisabled = computed(() => isEditing.value && !isDraft.value);
 
 const EDITABLE_KEYS = [

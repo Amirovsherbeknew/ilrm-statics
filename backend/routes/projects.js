@@ -238,4 +238,38 @@ router.patch('/:id', auth, allowRoles(['hokimiyat']), projectFiles, async (req, 
   }
 });
 
+router.patch('/:id/status', auth, allowRoles(['monitoring']), async (req, res, next) => {
+  try {
+    const existingProject = await findProject(req, req.params.id);
+
+    if (!existingProject) {
+      return res.status(404).json({ message: 'Loyiha topilmadi' });
+    }
+
+    if (existingProject.status !== 'IR') {
+      return res.status(400).json({ message: 'Faqat "Ko\'rib chiqilmoqda" holatidagi loyihalar uchun qaror qabul qilish mumkin' });
+    }
+
+    const { status, reason } = req.body;
+
+    if (!['IP', 'RD'].includes(status)) {
+      return res.status(400).json({ message: 'Status IP yoki RD bo\'lishi kerak' });
+    }
+
+    if (status === 'RD' && (!reason || !String(reason).trim())) {
+      return res.status(400).json({ message: 'Rad etish sababini kiritish majburiy' });
+    }
+
+    const updatedProject = await updateRecord(req, 'projects', req.params.id, {
+      status,
+      reason: status === 'RD' ? reason : '',
+      updatedAt: new Date().toISOString()
+    });
+
+    return res.json(updatedProject);
+  } catch (error) {
+    return next(error);
+  }
+});
+
 module.exports = router;

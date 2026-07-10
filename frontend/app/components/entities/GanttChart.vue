@@ -137,47 +137,56 @@
               ></td>
             </tr>
 
-            <!-- Bosqich qatorlari -->
-            <tr
-              v-for="(stage, index) in displayedStages"
-              :key="stage.id"
-              class="transition-colors hover:bg-slate-50"
-              :class="index % 2 === 1 ? 'bg-slate-50/50' : 'bg-white'"
-            >
-              <td
-                class="sticky left-0 z-10 max-w-[240px] truncate border-b border-r border-slate-200 bg-inherit px-3 py-2 text-left font-medium text-blue-900"
-                :title="stage.name"
+            <!-- Bosqich va mexanizm qatorlari -->
+            <template v-for="(row, index) in tableRows" :key="row.rowKey">
+              <tr
+                class="transition-colors hover:bg-slate-50"
+                :class="row.type === 'mechanism' ? 'bg-slate-50/60' : (index % 2 === 1 ? 'bg-slate-50/50' : 'bg-white')"
               >
-                {{ stage.name }}
-              </td>
-              <td class="border-b border-r border-slate-200 px-2 py-2 text-center font-medium text-emerald-700">
-                {{ stage.price !== null && stage.price !== undefined ? formatPrice(stage.price) : '—' }}
-              </td>
-              <td class="border-b border-r border-slate-200 px-2 py-2 text-center text-blue-700">
-                {{ durationDays(stage) }}
-              </td>
-              <td class="border-b border-r border-slate-200 px-2 py-2 text-center text-blue-700">
-                {{ stage.startDate }}
-              </td>
-              <td class="border-b border-r border-slate-200 px-2 py-2 text-center text-blue-700">
-                {{ stage.endDate }}
-              </td>
-              <td
-                v-for="col in columns"
-                :key="col.key"
-                class="border-b border-r border-slate-100 p-0"
-                :class="isStageActive(stage, col) ? 'bg-green-200/70' : ''"
-                :title="isStageActive(stage, col) ? `${stage.name}: ${col.title}` : ''"
-              ></td>
-            </tr>
+                <td
+                  class="sticky left-0 z-10 max-w-[240px] truncate border-b border-r border-slate-200 bg-inherit px-3 py-2 text-left"
+                  :class="row.type === 'stage' ? 'font-medium text-blue-900' : 'pl-6 text-slate-500'"
+                  :title="row.name"
+                >
+                  <span class="mr-1 text-slate-400">{{ row.number }}.</span>
+                  <span v-if="row.type === 'mechanism'" class="mr-1 text-slate-300">↳</span>
+                  {{ row.name }}
+                </td>
+                <td class="border-b border-r border-slate-200 px-2 py-2 text-center font-medium text-emerald-700">
+                  {{ row.type === 'stage' && row.price !== null && row.price !== undefined ? formatPrice(row.price) : '—' }}
+                </td>
+                <td class="border-b border-r border-slate-200 px-2 py-2 text-center text-blue-700">
+                  {{ rowDuration(row) }}
+                </td>
+                <td class="border-b border-r border-slate-200 px-2 py-2 text-center text-blue-700">
+                  {{ row.type === 'stage' ? row.startDate : row.beforeDate }}
+                </td>
+                <td class="border-b border-r border-slate-200 px-2 py-2 text-center text-blue-700">
+                  {{ row.type === 'stage' ? row.endDate : row.afterDate }}
+                </td>
+                <td
+                  v-for="col in columns"
+                  :key="col.key"
+                  class="border-b border-r border-slate-100 p-0"
+                  :class="isRowActive(row, col) ? (row.type === 'stage' ? 'bg-green-200/70' : 'bg-sky-200/70') : ''"
+                  :title="isRowActive(row, col) ? `${row.name}: ${col.title}` : ''"
+                ></td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
 
       <!-- Izoh -->
-      <div class="mt-3 flex items-center gap-1.5 text-xs text-slate-400">
-        <span class="h-2.5 w-2.5 rounded-sm bg-green-300"></span>
-        Bosqich amalga oshiriladigan oylar
+      <div class="mt-3 flex flex-wrap items-center gap-4 text-xs text-slate-400">
+        <span class="flex items-center gap-1.5">
+          <span class="h-2.5 w-2.5 rounded-sm bg-green-300"></span>
+          Bosqich amalga oshiriladigan oylar
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span class="h-2.5 w-2.5 rounded-sm bg-sky-300"></span>
+          Mexanizm amalga oshiriladigan oylar
+        </span>
       </div>
     </template>
   </div>
@@ -188,6 +197,10 @@ import { computed, ref, watch } from "vue";
 
 const props = defineProps({
   stages: {
+    type: Array,
+    default: () => [],
+  },
+  mechanisms: {
     type: Array,
     default: () => [],
   },
@@ -209,18 +222,28 @@ function toDate(value) {
   return new Date(value);
 }
 
-/* ---------- Bosqichlar va umumiy oraliq ---------- */
+/* ---------- Bosqichlar, mexanizmlar va umumiy oraliq ---------- */
 const validStages = computed(() =>
   props.stages.filter((stage) => stage.startDate && stage.endDate)
 );
 
+const validMechanisms = computed(() =>
+  props.mechanisms.filter((m) => m.beforeDate && m.afterDate)
+);
+
 const rangeStart = computed(() => {
-  const times = validStages.value.map((s) => toDate(s.startDate).getTime());
+  const times = [
+    ...validStages.value.map((s) => toDate(s.startDate).getTime()),
+    ...validMechanisms.value.map((m) => toDate(m.beforeDate).getTime()),
+  ];
   return new Date(times.length ? Math.min(...times) : Date.now());
 });
 
 const rangeEnd = computed(() => {
-  const times = validStages.value.map((s) => toDate(s.endDate).getTime());
+  const times = [
+    ...validStages.value.map((s) => toDate(s.endDate).getTime()),
+    ...validMechanisms.value.map((m) => toDate(m.afterDate).getTime()),
+  ];
   return new Date(times.length ? Math.max(...times) : Date.now());
 });
 
@@ -232,10 +255,15 @@ const totalPrice = computed(() =>
   validStages.value.reduce((sum, stage) => sum + (Number(stage.price) || 0), 0)
 );
 
-function durationDays(stage) {
-  const start = toDate(stage.startDate);
-  const end = toDate(stage.endDate);
-  return Math.max(1, Math.round((end - start) / MS_PER_DAY));
+function durationDays(start, end) {
+  return Math.max(1, Math.round((toDate(end) - toDate(start)) / MS_PER_DAY));
+}
+
+// Qator (bosqich yoki mexanizm) uchun davomiylik
+function rowDuration(row) {
+  return row.type === "stage"
+    ? durationDays(row.startDate, row.endDate)
+    : durationDays(row.beforeDate, row.afterDate);
 }
 
 /* ---------- Yil tablari ---------- */
@@ -244,6 +272,11 @@ const years = computed(() => {
   validStages.value.forEach((s) => {
     const y1 = toDate(s.startDate).getFullYear();
     const y2 = toDate(s.endDate).getFullYear();
+    for (let y = y1; y <= y2; y++) set.add(y);
+  });
+  validMechanisms.value.forEach((m) => {
+    const y1 = toDate(m.beforeDate).getFullYear();
+    const y2 = toDate(m.afterDate).getFullYear();
     for (let y = y1; y <= y2; y++) set.add(y);
   });
   return [...set].sort((a, b) => a - b);
@@ -310,7 +343,7 @@ const planTitle = computed(() =>
     : `${activeTab.value} yilda o'zlashtirish rejasi`
 );
 
-/* ---------- Tanlangan yil bo'yicha filtrlangan bosqichlar ---------- */
+/* ---------- Tanlangan yil bo'yicha filtrlangan bosqich/mexanizmlar ---------- */
 const displayedStages = computed(() => {
   if (!activeTab.value || activeTab.value === "Umumiy") return validStages.value;
   const year = Number(activeTab.value);
@@ -321,18 +354,58 @@ const displayedStages = computed(() => {
   });
 });
 
+const displayedMechanisms = computed(() => {
+  if (!activeTab.value || activeTab.value === "Umumiy") return validMechanisms.value;
+  const year = Number(activeTab.value);
+  return validMechanisms.value.filter((m) => {
+    const y1 = toDate(m.beforeDate).getFullYear();
+    const y2 = toDate(m.afterDate).getFullYear();
+    return year >= y1 && year <= y2;
+  });
+});
+
+// Bosqich qatori, ostida shu bosqichga tegishli mexanizm qatorlari (1, 1.1, 1.2, 2, ...)
+const tableRows = computed(() => {
+  const rows = [];
+  displayedStages.value.forEach((stage, sIndex) => {
+    rows.push({
+      ...stage,
+      type: "stage",
+      rowKey: `stage-${stage.id}`,
+      number: `${sIndex + 1}`,
+    });
+
+    const stageMechanisms = displayedMechanisms.value.filter(
+      (m) => String(m.stageId) === String(stage.id)
+    );
+
+    stageMechanisms.forEach((mechanism, mIndex) => {
+      rows.push({
+        ...mechanism,
+        type: "mechanism",
+        rowKey: `mechanism-${mechanism.id}`,
+        number: `${sIndex + 1}.${mIndex + 1}`,
+      });
+    });
+  });
+  return rows;
+});
+
 /* ---------- Katak faolligi ---------- */
-// Bosqich shu oy bilan kesishsa true
-function isStageActive(stage, col) {
+// Qator (bosqich yoki mexanizm) shu oy bilan kesishsa true
+function isRowActive(row, col) {
   const monthStart = new Date(col.year, col.month, 1).getTime();
   const monthEnd = new Date(col.year, col.month + 1, 0, 23, 59, 59).getTime();
-  const start = toDate(stage.startDate).getTime();
-  const end = toDate(stage.endDate).getTime();
+  const start = toDate(row.type === "stage" ? row.startDate : row.beforeDate).getTime();
+  const end = toDate(row.type === "stage" ? row.endDate : row.afterDate).getTime();
   return start <= monthEnd && end >= monthStart;
 }
 
 function isAnyStageActive(col) {
-  return validStages.value.some((stage) => isStageActive(stage, col));
+  return (
+    validStages.value.some((stage) => isRowActive({ ...stage, type: "stage" }, col)) ||
+    validMechanisms.value.some((m) => isRowActive({ ...m, type: "mechanism" }, col))
+  );
 }
 
 /* ---------- Yordamchi ---------- */
@@ -367,17 +440,17 @@ function downloadCsv() {
     ...columns.value.map((c) => (isAnyStageActive(c) ? "✓" : "")),
   ];
 
-  const stageRows = displayedStages.value.map((stage) => [
-    stage.name,
-    stage.price !== null && stage.price !== undefined ? formatPrice(stage.price) : "",
-    durationDays(stage),
-    stage.startDate,
-    stage.endDate,
-    ...columns.value.map((c) => (isStageActive(stage, c) ? "✓" : "")),
+  const rows = tableRows.value.map((row) => [
+    `${row.number}. ${row.name}`,
+    row.type === "stage" && row.price !== null && row.price !== undefined ? formatPrice(row.price) : "",
+    rowDuration(row),
+    row.type === "stage" ? row.startDate : row.beforeDate,
+    row.type === "stage" ? row.endDate : row.afterDate,
+    ...columns.value.map((c) => (isRowActive(row, c) ? "✓" : "")),
   ]);
 
   const escape = (v) => `"${String(v).replace(/"/g, '""')}"`;
-  const csv = [header, summaryRow, ...stageRows]
+  const csv = [header, summaryRow, ...rows]
     .map((row) => row.map(escape).join(","))
     .join("\n");
 

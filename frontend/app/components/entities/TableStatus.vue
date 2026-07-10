@@ -105,10 +105,35 @@ const statusTypes: ITableStatusTypes = {
     label: 'Oxirigacha yetmagan',
     class: 'bg-stone-100 text-stone-600',
   },
+  BM: {
+    icon: '',
+    label: 'Boshlanmagan',
+    class: 'bg-slate-100 text-slate-500',
+  },
+  BL: {
+    icon: 'card-remote',
+    label: 'Bloklangan',
+    class: 'bg-red-50 text-red-600',
+  },
   IP: {
     icon: 'reload',
     label: 'Bajarilmoqda',
     class: 'bg-orange-50 text-amber-600',
+  },
+  IR: {
+    icon: 'reload',
+    label: "Ko'rib chiqilmoqda",
+    class: 'bg-blue-50 text-blue-600',
+  },
+  RD: {
+    icon: 'remove-circle',
+    label: 'Rad etilgan',
+    class: 'bg-rose-50 text-rose-500',
+  },
+  AD: {
+    icon: 'check-circle',
+    label: 'Yakunlangan',
+    class: 'bg-teal-50 text-teal-600',
   },
   View: {
     icon: 'card',

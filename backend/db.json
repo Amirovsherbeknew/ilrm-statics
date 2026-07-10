@@ -235,7 +235,7 @@
       "eirr": 35.733279519970594
     },
     {
-      "name": "dasd",
+      "name": "dasd aa",
       "type": "Qishloq xo'jaligi",
       "year": "2026",
       "investmentType": "xususiy",
@@ -253,14 +253,117 @@
         127,
         126
       ],
-      "status": "DR",
-      "npv": null,
-      "dpp": null,
+      "status": "RD",
+      "npv": 44.76,
+      "dpp": 3.64,
       "bcr": null,
       "eirr": null,
       "createdAt": "2026-07-07T09:11:09.916Z",
-      "updatedAt": "2026-07-07T09:11:09.916Z",
-      "id": 4
+      "updatedAt": "2026-07-09T18:17:27.159Z",
+      "id": 4,
+      "localJobsCount": 2,
+      "foreignJobsCount": 3,
+      "responsibleEmployee": "3",
+      "publicOpinionFile": "/uploads/1783607882825-34576261-file--9-.pdf",
+      "resultDetails": {
+        "npv": {
+          "r": 23,
+          "rows": [
+            {
+              "year": 1,
+              "coef": 1.23,
+              "pv": 54.47154471544715
+            },
+            {
+              "year": 2,
+              "coef": 1.5129,
+              "pv": 44.28580871174566
+            },
+            {
+              "year": 3,
+              "coef": 1.8608669999999998,
+              "pv": 36.00472252987452
+            }
+          ],
+          "sumPv": 134.76207595706734,
+          "npv": 44.76207595706734,
+          "investment": 90,
+          "formulaLine": "r = 18% (kredit) + 5% (xavf) = 23%",
+          "summary": "Kredit stavkasi 18% va xavf 5% bo'lganda loyiha real foyda keltiradi: 44.76 mln so'm. Kredit olish foydali."
+        },
+        "dpp": {
+          "pp": 2.6470588235294117,
+          "dpp": 3.636347426470588,
+          "dppFound": true,
+          "rows": [
+            {
+              "year": 1,
+              "pv": 29.56521739130435,
+              "cumulative": 29.56521739130435,
+              "crossed": false
+            },
+            {
+              "year": 2,
+              "pv": 25.70888468809074,
+              "cumulative": 55.27410207939509,
+              "crossed": false
+            },
+            {
+              "year": 3,
+              "pv": 22.3555519026876,
+              "cumulative": 77.62965398208269,
+              "crossed": false
+            },
+            {
+              "year": 4,
+              "pv": 19.439610350163136,
+              "cumulative": 97.06926433224582,
+              "crossed": true
+            },
+            {
+              "year": 5,
+              "pv": 16.904009000141855,
+              "cumulative": 113.97327333238768,
+              "crossed": false
+            },
+            {
+              "year": 6,
+              "pv": 14.69913826099292,
+              "cumulative": 128.6724115933806,
+              "crossed": false
+            },
+            {
+              "year": 7,
+              "pv": 12.781859357385148,
+              "cumulative": 141.45427095076573,
+              "crossed": false
+            },
+            {
+              "year": 8,
+              "pv": 11.114660310769695,
+              "cumulative": 152.56893126153543,
+              "crossed": false
+            },
+            {
+              "year": 9,
+              "pv": 9.664922009364954,
+              "cumulative": 162.23385327090037,
+              "crossed": false
+            },
+            {
+              "year": 10,
+              "pv": 8.40428000814344,
+              "cumulative": 170.6381332790438,
+              "crossed": false
+            }
+          ],
+          "investment": 90,
+          "cashFlow": 34,
+          "maxYears": 10,
+          "rate": 15
+        }
+      },
+      "reason": "asdasd"
     },
     {
       "name": "test new",
@@ -391,6 +494,38 @@
           "rate": 15
         }
       }
+    },
+    {
+      "name": "sad",
+      "type": "Qishloq xo'jaligi",
+      "year": "2026",
+      "investmentType": "xususiy",
+      "organization": "sad",
+      "country": "O'zbekiston",
+      "guarantorBank": "Agrobank",
+      "insuranceCompany": "Uzbekinvest",
+      "localJobsCount": 3,
+      "foreignJobsCount": 4,
+      "responsibleEmployee": "a a a",
+      "businessPlan": "/uploads/1783590362169-408123742-file--9-.pdf",
+      "passportFile": "/uploads/1783590362170-825180450-file--9-.pdf",
+      "publicOpinionFile": "/uploads/1783590362170-110679466-file--9-.pdf",
+      "regions": [
+        14
+      ],
+      "districts": [
+        203,
+        204,
+        205
+      ],
+      "status": "DR",
+      "npv": null,
+      "dpp": null,
+      "bcr": null,
+      "eirr": null,
+      "createdAt": "2026-07-09T09:46:02.173Z",
+      "updatedAt": "2026-07-09T09:46:02.173Z",
+      "id": 6
     }
   ],
   "stages": [
@@ -532,6 +667,110 @@
       "createdAt": "2026-07-08T09:28:27.518Z",
       "updatedAt": "2026-07-08T09:28:27.518Z",
       "id": 15
+    },
+    {
+      "name": "2",
+      "price": 2,
+      "startDate": "2026-07-14",
+      "endDate": "2026-08-07",
+      "projectId": 6,
+      "createdAt": "2026-07-09T09:46:10.899Z",
+      "updatedAt": "2026-07-09T09:46:10.899Z",
+      "id": 16
+    }
+  ],
+  "mechanisms": [
+    {
+      "name": "Yer ajratish",
+      "beforeDate": "2026-07-14",
+      "afterDate": "2026-07-24",
+      "status": "IR",
+      "reasons": [
+        {
+          "id": 1783677254946,
+          "type": "text",
+          "text": "ads",
+          "filePath": "",
+          "fileName": "",
+          "createdBy": "hokimiyat",
+          "createdAt": "2026-07-09T09:54:14.946Z"
+        }
+      ],
+      "stageId": 16,
+      "createdAt": "2026-07-09T09:54:14.946Z",
+      "updatedAt": "2026-07-09T09:54:14.946Z",
+      "id": 1
+    },
+    {
+      "name": "asd",
+      "beforeDate": "2026-07-14",
+      "afterDate": "2026-07-24",
+      "status": "IR",
+      "reasons": [
+        {
+          "id": 1783680973478,
+          "type": "text",
+          "text": "dasd",
+          "filePath": "",
+          "fileName": "",
+          "createdBy": "hokimiyat",
+          "createdAt": "2026-07-09T10:36:13.478Z"
+        },
+        {
+          "id": 1783652758387,
+          "type": "text",
+          "text": "asdasdsadsad",
+          "filePath": "",
+          "fileName": "",
+          "createdBy": "hokimiyat",
+          "createdAt": "2026-07-10T03:05:58.387Z"
+        }
+      ],
+      "stageId": 1,
+      "createdAt": "2026-07-09T10:36:13.478Z",
+      "updatedAt": "2026-07-10T03:05:58.387Z",
+      "id": 2
+    },
+    {
+      "name": "123",
+      "beforeDate": "2026-07-23",
+      "afterDate": "2026-07-31",
+      "status": "BL",
+      "reasons": [
+        {
+          "id": 1783654446222,
+          "type": "started",
+          "text": "Mexanizm boshlandi",
+          "filePath": "",
+          "fileName": "",
+          "createdBy": "hokimiyat",
+          "createdAt": "2026-07-10T03:34:06.222Z"
+        },
+        {
+          "id": 1783654452242,
+          "type": "blocked",
+          "text": "Mexanizm bloklandi",
+          "filePath": "",
+          "fileName": "",
+          "createdBy": "hokimiyat",
+          "createdAt": "2026-07-10T03:34:12.242Z"
+        }
+      ],
+      "stageId": 11,
+      "createdAt": "2026-07-09T14:38:11.677Z",
+      "updatedAt": "2026-07-10T03:34:12.242Z",
+      "id": 3
+    },
+    {
+      "name": "22",
+      "beforeDate": "2026-07-22",
+      "afterDate": "2026-07-31",
+      "status": "BM",
+      "reasons": [],
+      "stageId": 16,
+      "createdAt": "2026-07-09T18:25:29.558Z",
+      "updatedAt": "2026-07-09T18:25:29.558Z",
+      "id": 4
     }
   ]
 }

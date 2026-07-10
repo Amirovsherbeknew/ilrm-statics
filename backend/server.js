@@ -6,6 +6,7 @@ const path = require('path');
 const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/projects');
 const stageRoutes = require('./routes/stages');
+const mechanismRoutes = require('./routes/mechanisms');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,6 +24,7 @@ app.use('/uploads', express.static(uploadsPath));
 app.use('/api', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/stages', stageRoutes);
+app.use('/api/mechanisms', mechanismRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });

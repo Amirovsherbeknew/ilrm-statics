@@ -76,7 +76,7 @@ async function handleFinish() {
 
   finishing.value = true;
 
-  const payload = { status: "IP", resultDetails: {} };
+  const payload = { status: "IR", resultDetails: {} };
   requiredKeys.value.forEach((key) => {
     payload[key] = calculatedValues[key];
     payload.resultDetails[key] = calculatedDetails[key];

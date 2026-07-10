@@ -25,6 +25,10 @@ async function findStage(req, id) {
   return collection(req, 'stages').getById(id).value();
 }
 
+async function findMechanism(req, id) {
+  return collection(req, 'mechanisms').getById(id).value();
+}
+
 async function findProjectIdInStages(req, projectId) {
   return collection(req, 'stages').filter(stage => stage.projectId === Number(projectId)).value();
 }
@@ -74,6 +78,7 @@ module.exports = {
   findProject,
   findProjectIdInStages,
   findStage,
+  findMechanism,
   insertRecord,
   updateRecord,
   removeRecord,

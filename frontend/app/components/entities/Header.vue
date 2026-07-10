@@ -8,7 +8,7 @@
             </div>
         </nuxt-link>
         <div class="flex items-center gap-3">
-            <el-segmented v-if="getRole() === 'monitoring'" v-model="value" :options="options" block class="w-[220px] shadow border border-stone-100" @change="router.push({name:$event})"/>
+            <el-segmented v-model="value" :options="options" block class="w-[420px] shadow border border-stone-100" @change="router.push({name:$event})"/>
             <ActionButton type="exit" @click="handleLogout"/>
         </div>
     </div>
@@ -24,20 +24,31 @@ function handleLogout() {
     clearTokens()
 }
 
-const options = [
-  {
-    label:'Monitoring',
-    value:'index'
-  },
-  {
-    label:'Loyihalar',
-    value:'projects'
-  }
-]
+const options = computed(() => {
+  const list = [
+    {
+      label:'Monitoring',
+      value:'index',
+      permision:['monitoring']
+    },
+    {
+      label:'Loyihalar',
+      value:'projects',
+      permision:['monitoring','hokimiyat']
+    },
+    {
+      label:'Mexanizimlar',
+      value:'mechanisim',
+      permision:['monitoring','hokimiyat']
+    }
+  ]
+  return list?.filter(resp => resp?.permision?.includes(getRole() as string))
+})
 onMounted(() => {
     if (String(route.name || '')?.includes('projects')) {
       value.value = 'projects'
     }
-    else value.value = 'index'
+    else value.value = options?.value?.find(resp => resp.value === route.name)?.value || 'index'
 })
+
 </script>
