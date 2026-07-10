@@ -19,7 +19,7 @@
                 :header-cell-style="headerCellStyle"
                 :cell-style="cellStyle"
             >
-                <el-table-column type="index" label="#" width="56" align="center" />
+                <el-table-column type="index" label="#" width="80" align="center" />
 
                 <el-table-column prop="name" label="Loyiha nomi" min-width="200">
                     <template #default="{ row }">
@@ -72,7 +72,7 @@
                     </template>
                 </el-table-column>
 
-                <el-table-column prop="guarantorBank" label="Kafil bank" width="140">
+                <el-table-column prop="guarantorBank" label="Kafil bank" width="180">
                     <template #default="{ row }">
                         <span class="text-slate-600">{{ row.guarantorBank }}</span>
                     </template>

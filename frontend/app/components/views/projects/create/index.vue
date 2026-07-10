@@ -53,6 +53,15 @@
           />
         </el-form-item>
 
+        <!-- Kadastr raqami -->
+        <el-form-item label="Kadastr raqami" prop="cadastreNumber">
+          <el-input
+            v-model="form.cadastreNumber"
+            placeholder="Kadastr raqamini kiriting"
+            size="large"
+          />
+        </el-form-item>
+
         <!-- 10) Qaysi davlat -->
         <el-form-item label="Qaysi davlat" prop="country">
           <el-select
@@ -368,6 +377,7 @@ const form = reactive({
   country: "",
   guarantorBank: "",
   insuranceCompany: "",
+  cadastreNumber: "",
   regions: [],
   districts: [],
   localJobsCount: null,
@@ -379,6 +389,7 @@ const form = reactive({
 // ====== Validatsiya qoidalari ======
 const rules = {
   name: [{ required: true, message: "Loyiha nomini kiriting", trigger: "blur" }],
+  cadastreNumber: [{ required: true, message: "Kadastir raqamini kiriting", trigger: "blur" }],
   type: [{ required: true, message: "Loyiha turini tanlang", trigger: "change" }],
   year: [{ required: true, message: "Loyiha yilini tanlang", trigger: "change" }],
   investmentType: [{ required: true, message: "Investitsiya turini tanlang", trigger: "change" }],
@@ -423,6 +434,7 @@ const EDITABLE_KEYS = [
   "country",
   "guarantorBank",
   "insuranceCompany",
+  "cadastreNumber",
   "regions",
   "districts",
   "localJobsCount",
@@ -454,6 +466,7 @@ watch(
       form.country = val?.country;
       form.guarantorBank = val?.guarantorBank;
       form.insuranceCompany = val?.insuranceCompany;
+      form.cadastreNumber = val?.cadastreNumber || "";
       form.regions = val?.regions || [];
       form.districts = val?.districts || [];
       form.localJobsCount = val?.localJobsCount ?? null;
@@ -509,6 +522,7 @@ async function handleSubmit() {
       payload.append("responsibleEmployee", form.responsibleEmployee);
       if (form.guarantorBank) payload.append("guarantorBank", form.guarantorBank);
       if (form.insuranceCompany) payload.append("insuranceCompany", form.insuranceCompany);
+      if (form.cadastreNumber) payload.append("cadastreNumber", form.cadastreNumber);
       if (form.businessPlan?.raw) payload.append("businessPlan", form.businessPlan.raw);
       if (form.passportFile?.raw) payload.append("passportFile", form.passportFile.raw);
       if (form.publicOpinionFile?.raw) payload.append("publicOpinionFile", form.publicOpinionFile.raw);
@@ -548,6 +562,7 @@ async function handleSubmit() {
     payload.append("responsibleEmployee", form.responsibleEmployee);
     if (form.guarantorBank) payload.append("guarantorBank", form.guarantorBank);
     if (form.insuranceCompany) payload.append("insuranceCompany", form.insuranceCompany);
+    if (form.cadastreNumber) payload.append("cadastreNumber", form.cadastreNumber);
     payload.append("businessPlan", form.businessPlan.raw);
     payload.append("passportFile", form.passportFile.raw);
     if (form.publicOpinionFile?.raw) payload.append("publicOpinionFile", form.publicOpinionFile.raw);

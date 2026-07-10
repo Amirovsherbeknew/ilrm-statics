@@ -171,7 +171,7 @@ const allProjects = ref([])
 
 async function fetchProjects() {
   const { data } = await useFetchApi.get('/api/projects')
-  allProjects.value = data.value?.length > 0 ? data.value?.filter(resp => resp?.status !== 'DR'):[]
+  allProjects.value = data.value || []
 }
 
 onMounted(fetchProjects)
