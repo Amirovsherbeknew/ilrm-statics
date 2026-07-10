@@ -526,6 +526,135 @@
       "createdAt": "2026-07-09T09:46:02.173Z",
       "updatedAt": "2026-07-09T09:46:02.173Z",
       "id": 6
+    },
+    {
+      "name": "test new new",
+      "type": "Xizmat ko'rsatish",
+      "year": "2026",
+      "investmentType": "xususiy",
+      "organization": "asd",
+      "country": "O'zbekiston",
+      "guarantorBank": "Xalq banki",
+      "insuranceCompany": "Uzbekinvest",
+      "localJobsCount": 34,
+      "foreignJobsCount": 2,
+      "responsibleEmployee": "Aliyev Alibek Alivich",
+      "businessPlan": "/uploads/1783654793223-835497368-file--9-.pdf",
+      "passportFile": "/uploads/1783654793224-706284032-file--9-.pdf",
+      "publicOpinionFile": "/uploads/1783654793224-388708354-file--9-.pdf",
+      "regions": [
+        14
+      ],
+      "districts": [
+        201,
+        202
+      ],
+      "status": "IR",
+      "npv": 0.51,
+      "dpp": 4.29,
+      "bcr": null,
+      "eirr": null,
+      "createdAt": "2026-07-10T03:39:53.225Z",
+      "updatedAt": "2026-07-10T03:44:27.030Z",
+      "id": 7,
+      "resultDetails": {
+        "npv": {
+          "r": 23,
+          "rows": [
+            {
+              "year": 1,
+              "coef": 1.23,
+              "pv": 36.58536585365854
+            },
+            {
+              "year": 2,
+              "coef": 1.5129,
+              "pv": 29.744199881023203
+            },
+            {
+              "year": 3,
+              "coef": 1.8608669999999998,
+              "pv": 24.182276326035126
+            }
+          ],
+          "sumPv": 90.51184206071686,
+          "npv": 0.5118420607168588,
+          "investment": 90,
+          "formulaLine": "r = 18% (kredit) + 5% (xavf) = 23%",
+          "summary": "Kredit stavkasi 18% va xavf 5% bo'lganda loyiha real foyda keltiradi: 0.51 mln so'm. Kredit olish foydali."
+        },
+        "dpp": {
+          "pp": 3,
+          "dpp": 4.291690312499999,
+          "dppFound": true,
+          "rows": [
+            {
+              "year": 1,
+              "pv": 26.086956521739133,
+              "cumulative": 26.086956521739133,
+              "crossed": false
+            },
+            {
+              "year": 2,
+              "pv": 22.684310018903595,
+              "cumulative": 48.77126654064273,
+              "crossed": false
+            },
+            {
+              "year": 3,
+              "pv": 19.725486972959647,
+              "cumulative": 68.49675351360237,
+              "crossed": false
+            },
+            {
+              "year": 4,
+              "pv": 17.152597367791,
+              "cumulative": 85.64935088139337,
+              "crossed": false
+            },
+            {
+              "year": 5,
+              "pv": 14.915302058948697,
+              "cumulative": 100.56465294034207,
+              "crossed": true
+            },
+            {
+              "year": 6,
+              "pv": 12.969827877346694,
+              "cumulative": 113.53448081768876,
+              "crossed": false
+            },
+            {
+              "year": 7,
+              "pv": 11.278111197692779,
+              "cumulative": 124.81259201538154,
+              "crossed": false
+            },
+            {
+              "year": 8,
+              "pv": 9.807053215385025,
+              "cumulative": 134.61964523076657,
+              "crossed": false
+            },
+            {
+              "year": 9,
+              "pv": 8.52787236120437,
+              "cumulative": 143.14751759197094,
+              "crossed": false
+            },
+            {
+              "year": 10,
+              "pv": 7.415541183655976,
+              "cumulative": 150.56305877562693,
+              "crossed": false
+            }
+          ],
+          "investment": 90,
+          "cashFlow": 30,
+          "maxYears": 10,
+          "rate": 15
+        }
+      }
     }
   ],
   "stages": [
@@ -677,6 +806,16 @@
       "createdAt": "2026-07-09T09:46:10.899Z",
       "updatedAt": "2026-07-09T09:46:10.899Z",
       "id": 16
+    },
+    {
+      "name": "Boshlangich bosqich",
+      "price": 20,
+      "startDate": "2026-07-01",
+      "endDate": "2026-08-25",
+      "projectId": 7,
+      "createdAt": "2026-07-10T03:40:13.602Z",
+      "updatedAt": "2026-07-10T03:40:13.602Z",
+      "id": 17
     }
   ],
   "mechanisms": [
@@ -765,12 +904,44 @@
       "name": "22",
       "beforeDate": "2026-07-22",
       "afterDate": "2026-07-31",
-      "status": "BM",
-      "reasons": [],
+      "status": "IP",
+      "reasons": [
+        {
+          "id": 1783654681371,
+          "type": "started",
+          "text": "Mexanizm boshlandi",
+          "filePath": "",
+          "fileName": "",
+          "createdBy": "hokimiyat",
+          "createdAt": "2026-07-10T03:38:01.371Z"
+        }
+      ],
       "stageId": 16,
       "createdAt": "2026-07-09T18:25:29.558Z",
-      "updatedAt": "2026-07-09T18:25:29.558Z",
+      "updatedAt": "2026-07-10T03:38:01.371Z",
       "id": 4
+    },
+    {
+      "name": "Yer ajratish",
+      "beforeDate": "2026-07-08",
+      "afterDate": "2026-07-15",
+      "status": "BM",
+      "reasons": [],
+      "stageId": 17,
+      "createdAt": "2026-07-10T03:40:30.096Z",
+      "updatedAt": "2026-07-10T03:40:30.096Z",
+      "id": 5
+    },
+    {
+      "name": "Qurilish materiallarini sotib olish",
+      "beforeDate": "2026-07-15",
+      "afterDate": "2026-07-22",
+      "status": "BM",
+      "reasons": [],
+      "stageId": 17,
+      "createdAt": "2026-07-10T03:44:00.147Z",
+      "updatedAt": "2026-07-10T03:44:00.147Z",
+      "id": 6
     }
   ]
 }

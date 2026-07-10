@@ -162,9 +162,17 @@ async function fetchAll() {
     useFetchApi.get("/api/projects"),
   ]);
 
+  const allProjects = projectRes.data.value || [];
+  const draftProjectIds = new Set(
+    allProjects.filter((p) => p.status === "DR").map((p) => String(p.id))
+  );
+
   mechanismsRaw.value = mechRes.data.value || [];
-  stages.value = stageRes.data.value || [];
-  projects.value = projectRes.data.value || [];
+  // Hali qoralama (DR) holatidagi loyihalarning bosqichlarini chiqarmaymiz
+  stages.value = (stageRes.data.value || []).filter(
+    (s) => !draftProjectIds.has(String(s.projectId))
+  );
+  projects.value = allProjects;
 
   loading.value = false;
 }
@@ -172,18 +180,22 @@ async function fetchAll() {
 onMounted(fetchAll);
 
 const rows = computed(() =>
-  mechanismsRaw.value.map((m) => {
-    const stage = stages.value.find((s) => String(s.id) === String(m.stageId));
-    const project = stage ? projects.value.find((p) => String(p.id) === String(stage.projectId)) : null;
+  mechanismsRaw.value
+    .map((m) => {
+      const stage = stages.value.find((s) => String(s.id) === String(m.stageId));
+      if (!stage) return null;
 
-    return {
-      ...m,
-      stageName: stage?.name || "—",
-      projectName: project?.name || "—",
-      projectId: project?.id ?? null,
-      projectStatus: project?.status ?? null,
-    };
-  })
+      const project = projects.value.find((p) => String(p.id) === String(stage.projectId));
+
+      return {
+        ...m,
+        stageName: stage.name,
+        projectName: project?.name || "—",
+        projectId: project?.id ?? null,
+        projectStatus: project?.status ?? null,
+      };
+    })
+    .filter(Boolean)
 );
 
 const tabCounts = computed(() => {

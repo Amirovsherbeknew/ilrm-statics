@@ -383,18 +383,71 @@ a {
     }
   }
   
-  // Plain variant
+  // Plain variant — turiga (primary/success/warning/danger/info) qarab rangi belgilanadi
   &.is-plain {
     background-color: transparent !important;
-    color: hsl(var(--primary)) !important;
-    border-color: hsl(var(--primary)) !important;
-    
-    &:hover {
-      background-color: hsl(var(--primary)) !important;
-      color: hsl(var(--primary-foreground)) !important;
+
+    &.el-button--primary {
+      color: hsl(var(--primary)) !important;
+      border-color: hsl(var(--primary)) !important;
+
+      &:hover {
+        background-color: hsl(var(--primary)) !important;
+        color: hsl(var(--primary-foreground)) !important;
+      }
+    }
+
+    &.el-button--success {
+      color: hsl(142 76% 36%) !important;
+      border-color: hsl(142 76% 36%) !important;
+
+      &:hover {
+        background-color: hsl(142 76% 36%) !important;
+        color: hsl(var(--primary-foreground)) !important;
+      }
+    }
+
+    &.el-button--warning {
+      color: hsl(38 92% 50%) !important;
+      border-color: hsl(38 92% 50%) !important;
+
+      &:hover {
+        background-color: hsl(38 92% 50%) !important;
+        color: hsl(var(--primary-foreground)) !important;
+      }
+    }
+
+    &.el-button--danger {
+      color: hsl(var(--destructive)) !important;
+      border-color: hsl(var(--destructive)) !important;
+
+      &:hover {
+        background-color: hsl(var(--destructive)) !important;
+        color: hsl(var(--destructive-foreground)) !important;
+      }
+    }
+
+    &.el-button--info {
+      color: hsl(210 40% 50%) !important;
+      border-color: hsl(210 40% 50%) !important;
+
+      &:hover {
+        background-color: hsl(210 40% 50%) !important;
+        color: hsl(var(--primary-foreground)) !important;
+      }
+    }
+
+    &.el-button--default {
+      color: hsl(var(--foreground)) !important;
+      border-color: hsl(var(--border)) !important;
+
+      &:hover {
+        background-color: hsl(var(--accent)) !important;
+        color: hsl(var(--accent-foreground)) !important;
+      }
     }
   }
-  
+
   // Size variants
   &.el-button--large {
     padding: 0 2rem !important;

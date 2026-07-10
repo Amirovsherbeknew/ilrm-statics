@@ -101,7 +101,7 @@
                     <ActionButton type="delete"/>
                   </template>
                 </el-popconfirm>
-                <el-popconfirm
+                <!-- <el-popconfirm
                   v-if="row.status === 'BM'"
                   title="Mexanizmni boshlashni tasdiqlaysizmi?"
                   confirm-button-text="Ha"
@@ -111,7 +111,7 @@
                   <template #reference>
                     <el-button type="primary" size="small" plain>Boshlash</el-button>
                   </template>
-                </el-popconfirm>
+                </el-popconfirm> -->
                 <el-button
                   v-if="row.status === 'IP'"
                   type="warning"

@@ -24,7 +24,7 @@
               <el-button type="success" :loading="statusUpdating" @click="approveProject">
                 Tasdiqlash
               </el-button>
-              <el-button type="danger" plain :loading="statusUpdating" @click="rejectProject">
+              <el-button type="danger" :loading="statusUpdating" @click="rejectProject">
                 Rad etish
               </el-button>
             </template>
@@ -72,7 +72,7 @@
                   @click="openDetail(m.key)"
                 >
                   <div class="flex items-center justify-between gap-2">
-                    <p class="text-xs font-medium opacity-70">{{ m.label }}</p>
+                    <p class="text-xs font-medium opacity-70">{{ m.title }}</p>
                     <Icon v-if="hasDetail(m.key)" name="lucide:maximize-2" class="h-3.5 w-3.5 opacity-50" />
                   </div>
                   <p class="text-lg font-bold">{{ format(m.value) }}{{ m.suffix }}</p>
