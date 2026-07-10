@@ -655,6 +655,36 @@
           "rate": 15
         }
       }
+    },
+    {
+      "name": "shdj",
+      "type": "Xizmat ko'rsatish",
+      "year": "2026",
+      "investmentType": "davlat",
+      "organization": "uzbekinvest",
+      "country": "Xitoy",
+      "guarantorBank": "Ipoteka bank",
+      "insuranceCompany": "Uzbekinvest",
+      "localJobsCount": 30,
+      "foreignJobsCount": 3,
+      "responsibleEmployee": "Saidmurod",
+      "businessPlan": "/uploads/1783680680815-272776314-export-to-pdf.pdf",
+      "passportFile": "/uploads/1783680681357-183839325-export-to-pdf.pdf",
+      "publicOpinionFile": "/uploads/1783680681629-661567064-export-to-pdf.pdf",
+      "regions": [
+        8
+      ],
+      "districts": [
+        116
+      ],
+      "status": "DR",
+      "npv": null,
+      "dpp": null,
+      "bcr": null,
+      "eirr": null,
+      "createdAt": "2026-07-10T10:51:21.901Z",
+      "updatedAt": "2026-07-10T10:51:21.901Z",
+      "id": 8
     }
   ],
   "stages": [
@@ -816,6 +846,16 @@
       "createdAt": "2026-07-10T03:40:13.602Z",
       "updatedAt": "2026-07-10T03:40:13.602Z",
       "id": 17
+    },
+    {
+      "name": "plan",
+      "price": 1000000,
+      "startDate": "2026-07-01",
+      "endDate": "2026-07-31",
+      "projectId": 8,
+      "createdAt": "2026-07-10T10:52:26.890Z",
+      "updatedAt": "2026-07-10T10:52:26.890Z",
+      "id": 18
     }
   ],
   "mechanisms": [
@@ -844,7 +884,7 @@
       "name": "asd",
       "beforeDate": "2026-07-14",
       "afterDate": "2026-07-24",
-      "status": "IR",
+      "status": "AD",
       "reasons": [
         {
           "id": 1783680973478,
@@ -863,11 +903,20 @@
           "fileName": "",
           "createdBy": "hokimiyat",
           "createdAt": "2026-07-10T03:05:58.387Z"
+        },
+        {
+          "id": 1783665223305,
+          "type": "approved",
+          "text": "Mexanizm tasdiqlandi",
+          "filePath": "",
+          "fileName": "",
+          "createdBy": "monitoring",
+          "createdAt": "2026-07-10T06:33:43.305Z"
         }
       ],
       "stageId": 1,
       "createdAt": "2026-07-09T10:36:13.478Z",
-      "updatedAt": "2026-07-10T03:05:58.387Z",
+      "updatedAt": "2026-07-10T06:33:43.305Z",
       "id": 2
     },
     {
@@ -925,23 +974,54 @@
       "name": "Yer ajratish",
       "beforeDate": "2026-07-08",
       "afterDate": "2026-07-15",
-      "status": "BM",
-      "reasons": [],
+      "status": "IP",
+      "reasons": [
+        {
+          "id": 1783667837106,
+          "type": "started",
+          "text": "Mexanizm boshlandi",
+          "filePath": "",
+          "fileName": "",
+          "createdBy": "hokimiyat",
+          "createdAt": "2026-07-10T07:17:17.106Z"
+        }
+      ],
       "stageId": 17,
       "createdAt": "2026-07-10T03:40:30.096Z",
-      "updatedAt": "2026-07-10T03:40:30.096Z",
+      "updatedAt": "2026-07-10T07:17:17.106Z",
       "id": 5
     },
     {
       "name": "Qurilish materiallarini sotib olish",
       "beforeDate": "2026-07-15",
       "afterDate": "2026-07-22",
-      "status": "BM",
-      "reasons": [],
+      "status": "IP",
+      "reasons": [
+        {
+          "id": 1783667841851,
+          "type": "started",
+          "text": "Mexanizm boshlandi",
+          "filePath": "",
+          "fileName": "",
+          "createdBy": "hokimiyat",
+          "createdAt": "2026-07-10T07:17:21.851Z"
+        }
+      ],
       "stageId": 17,
       "createdAt": "2026-07-10T03:44:00.147Z",
-      "updatedAt": "2026-07-10T03:44:00.147Z",
+      "updatedAt": "2026-07-10T07:17:21.851Z",
       "id": 6
+    },
+    {
+      "name": "uyu",
+      "beforeDate": "2026-07-17",
+      "afterDate": "2026-07-31",
+      "status": "BM",
+      "reasons": [],
+      "stageId": 18,
+      "createdAt": "2026-07-10T10:53:08.671Z",
+      "updatedAt": "2026-07-10T10:53:08.671Z",
+      "id": 7
     }
   ]
 }
